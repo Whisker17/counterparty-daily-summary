@@ -1,13 +1,7 @@
 {
   "autopilot_run_id": "",
-  "coverage": "partial",
-  "errors": [
-    {
-      "error": "partial",
-      "message": "PR #2840 detail unavailable: Get \"https://api.github.com/repos/base/base/pulls/2840\": unexpected EOF",
-      "repo": "base/base"
-    }
-  ],
+  "coverage": "full",
+  "errors": [],
   "report_date": "2026-05-22",
   "repos": {
     "base/base": {
@@ -2277,6 +2271,46 @@
             "user": "rayyan224"
           },
           {
+            "additions": 2,
+            "changed_files": 1,
+            "closed_at": "2026-05-22T01:11:06Z",
+            "content_signals": {
+              "body_excerpt": "Make it build",
+              "changed_files": [
+                {
+                  "additions": 2,
+                  "changes": 4,
+                  "deletions": 2,
+                  "filename": "crates/common/precompiles/src/b20_stablecoin/dispatch.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix stablecoin activation guard"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "1 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-22T01:10:08Z",
+            "current_status": "closed_unmerged",
+            "deletions": 2,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2840,
+            "review_time_hours": null,
+            "state": "closed",
+            "title": "fix(compilation): fix activation guard",
+            "updated_at": "2026-05-22T01:11:06Z",
+            "user": "danyalprout"
+          },
+          {
             "additions": 1,
             "changed_files": 1,
             "closed_at": "2026-05-22T01:45:30Z",
@@ -2314,32 +2348,6 @@
             "title": "chore: update succinct manifest",
             "updated_at": "2026-05-22T01:45:31Z",
             "user": "mw2000"
-          },
-          {
-            "additions": null,
-            "changed_files": null,
-            "closed_at": "2026-05-22T01:11:06Z",
-            "content_signals": {
-              "body_excerpt": "Make it build",
-              "changed_files": [],
-              "commit_subjects": [],
-              "modules": [],
-              "summary_basis": [
-                "PR body"
-              ]
-            },
-            "created_at": "2026-05-22T01:10:08Z",
-            "current_status": "closed_unmerged",
-            "deletions": null,
-            "draft": false,
-            "labels": [],
-            "merged_at": null,
-            "number": 2840,
-            "review_time_hours": null,
-            "state": "closed",
-            "title": "fix(compilation): fix activation guard",
-            "updated_at": "2026-05-22T01:11:06Z",
-            "user": "danyalprout"
           }
         ],
         "draft": [
@@ -7083,21 +7091,35 @@
             "user": "mw2000"
           },
           {
-            "additions": null,
-            "changed_files": null,
+            "additions": 2,
+            "changed_files": 1,
             "closed_at": "2026-05-22T01:11:06Z",
             "content_signals": {
               "body_excerpt": "Make it build",
-              "changed_files": [],
-              "commit_subjects": [],
-              "modules": [],
+              "changed_files": [
+                {
+                  "additions": 2,
+                  "changes": 4,
+                  "deletions": 2,
+                  "filename": "crates/common/precompiles/src/b20_stablecoin/dispatch.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix stablecoin activation guard"
+              ],
+              "modules": [
+                "crates"
+              ],
               "summary_basis": [
-                "PR body"
+                "PR body",
+                "1 changed files",
+                "1 commits"
               ]
             },
             "created_at": "2026-05-22T01:10:08Z",
             "current_status": "closed_unmerged",
-            "deletions": null,
+            "deletions": 2,
             "draft": false,
             "labels": [],
             "merged_at": null,
@@ -12681,21 +12703,35 @@
             "user": "mw2000"
           },
           {
-            "additions": null,
-            "changed_files": null,
+            "additions": 2,
+            "changed_files": 1,
             "closed_at": "2026-05-22T01:11:06Z",
             "content_signals": {
               "body_excerpt": "Make it build",
-              "changed_files": [],
-              "commit_subjects": [],
-              "modules": [],
+              "changed_files": [
+                {
+                  "additions": 2,
+                  "changes": 4,
+                  "deletions": 2,
+                  "filename": "crates/common/precompiles/src/b20_stablecoin/dispatch.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix stablecoin activation guard"
+              ],
+              "modules": [
+                "crates"
+              ],
               "summary_basis": [
-                "PR body"
+                "PR body",
+                "1 changed files",
+                "1 commits"
               ]
             },
             "created_at": "2026-05-22T01:10:08Z",
             "current_status": "closed_unmerged",
-            "deletions": null,
+            "deletions": 2,
             "draft": false,
             "labels": [],
             "merged_at": null,
@@ -23491,7 +23527,7 @@
     }
   },
   "timezone": "Asia/Shanghai",
-  "triggered_at": "2026-05-23T18:16:18+08:00",
+  "triggered_at": "2026-05-23T18:19:06+08:00",
   "window": {
     "since": "2026-05-22T00:00:00+08:00",
     "until": "2026-05-23T00:00:00+08:00"
