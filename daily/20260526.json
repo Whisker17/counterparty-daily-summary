@@ -1,0 +1,3388 @@
+{
+  "autopilot_run_id": "",
+  "coverage": "partial",
+  "errors": [
+    {
+      "error": "fetch_failed",
+      "message": "error connecting to api.github.com\ncheck your internet connection or https://githubstatus.com",
+      "repo": "ethereum-optimism/optimism"
+    },
+    {
+      "error": "fetch_failed",
+      "message": "error connecting to api.github.com\ncheck your internet connection or https://githubstatus.com",
+      "repo": "ethereum-optimism/op-geth"
+    }
+  ],
+  "report_date": "2026-05-26",
+  "repos": {
+    "base/base": {
+      "commits": {
+        "by_module": {
+          "bin": 2,
+          "crates": 13,
+          "root": 2
+        },
+        "by_type": {
+          "chore": 1,
+          "feature": 1
+        },
+        "count": 2,
+        "files_changed": 17,
+        "items": [
+          {
+            "additions": 2538,
+            "author": "wlawt",
+            "date": "2026-05-26T15:19:36Z",
+            "deletions": 2,
+            "files_changed": 14,
+            "message": "feat: introduce `snapshotter` (#2550)",
+            "sha": "847c4a8ec6c2d5817fa3523fb02ab1a7afae7309",
+            "type": "feature"
+          },
+          {
+            "additions": 17,
+            "author": "refcell",
+            "date": "2026-05-26T14:31:59Z",
+            "deletions": 8,
+            "files_changed": 3,
+            "message": "feat(chains): schedule zeronet beryl activation (#2925)",
+            "sha": "1b9447cf69156d97347bcfcfcedb693610a75d6b",
+            "type": "chore"
+          }
+        ],
+        "loc_added": 2555,
+        "loc_removed": 10
+      },
+      "contributors_active": [
+        "refcell",
+        "wlawt"
+      ],
+      "default_branch": "main",
+      "key_prs": [
+        {
+          "additions": 2538,
+          "author": "wlawt",
+          "changed_files": 14,
+          "content_signals": {
+            "body_excerpt": "co-authored with claude\r\n\r\nOverview:\r\n- Introduces `bin/snappy` and `infra/snappy`. The bin will be ran as a sidecar against `base-node-reth` and `base-consensus` and will pause the `base-node-reth` container, run `Reth::SnapshotManifestCommand` to produce a manifest.json and all the tar files, and unpause `base-node-reth`\r\n- Utilizes the `bollard` package to manage the pause/unpause state of docker containers\r\n- Utilizes the S3 SDK as R2/MinIO are all S3-API compatible \r\n\r\nTests:\r\n- Wrote integration tests (pause, unpause, uploading to MinIO)\r\n- Wrote an e2e test (pause -> upload -> unpause)\r\n\r\nUp next:\r\n- [ ] Wiring up the `reth download` command to `crates/execution`\r\n- [ ] Optimizations to upload only diffs. That is, not uploading committed static files anymore",
+            "changed_files": [
+              {
+                "additions": 43,
+                "changes": 45,
+                "deletions": 2,
+                "filename": "Cargo.lock",
+                "status": "modified"
+              },
+              {
+                "additions": 8,
+                "changes": 8,
+                "deletions": 0,
+                "filename": "Cargo.toml",
+                "status": "modified"
+              },
+              {
+                "additions": 27,
+                "changes": 27,
+                "deletions": 0,
+                "filename": "bin/snapshotter/Cargo.toml",
+                "status": "added"
+              },
+              {
+                "additions": 69,
+                "changes": 69,
+                "deletions": 0,
+                "filename": "bin/snapshotter/main.rs",
+                "status": "added"
+              },
+              {
+                "additions": 38,
+                "changes": 38,
+                "deletions": 0,
+                "filename": "crates/infra/snapshotter/Cargo.toml",
+                "status": "added"
+              },
+              {
+                "additions": 37,
+                "changes": 37,
+                "deletions": 0,
+                "filename": "crates/infra/snapshotter/README.md",
+                "status": "added"
+              },
+              {
+                "additions": 86,
+                "changes": 86,
+                "deletions": 0,
+                "filename": "crates/infra/snapshotter/src/config.rs",
+                "status": "added"
+              },
+              {
+                "additions": 108,
+                "changes": 108,
+                "deletions": 0,
+                "filename": "crates/infra/snapshotter/src/container.rs",
+                "status": "added"
+              },
+              {
+                "additions": 23,
+                "changes": 23,
+                "deletions": 0,
+                "filename": "crates/infra/snapshotter/src/lib.rs",
+                "status": "added"
+              },
+              {
+                "additions": 146,
+                "changes": 146,
+                "deletions": 0,
+                "filename": "crates/infra/snapshotter/src/orchestrator.rs",
+                "status": "added"
+              },
+              {
+                "additions": 794,
+                "changes": 794,
+                "deletions": 0,
+                "filename": "crates/infra/snapshotter/src/snapshot.rs",
+                "status": "added"
+              },
+              {
+                "additions": 454,
+                "changes": 454,
+                "deletions": 0,
+                "filename": "crates/infra/snapshotter/src/upload.rs",
+                "status": "added"
+              },
+              {
+                "additions": 42,
+                "changes": 42,
+                "deletions": 0,
+                "filename": "crates/infra/snapshotter/tests/common/mod.rs",
+                "status": "added"
+              },
+              {
+                "additions": 663,
+                "changes": 663,
+                "deletions": 0,
+                "filename": "crates/infra/snapshotter/tests/e2e_test.rs",
+                "status": "added"
+              }
+            ],
+            "commit_subjects": [
+              "spike",
+              "use SnapshotCommand wiring + similar manifest structure + add e2e",
+              "rename + err handling + parallelize + creds + nits + multi-part upload",
+              "perf: snapshotter to only upload diffs for static files (#2583)",
+              "perf: skip compression on finalized static files (#2700)",
+              "feedback"
+            ],
+            "modules": [
+              "bin",
+              "crates",
+              "root"
+            ],
+            "summary_basis": [
+              "PR body",
+              "14 changed files",
+              "6 commits"
+            ]
+          },
+          "current_status": "merged",
+          "deletions": 2,
+          "event_types": [
+            "merged"
+          ],
+          "evidence": "2540 LOC, 14 files, labels: active",
+          "importance_score": 7890,
+          "labels": [
+            "active"
+          ],
+          "number": 2550,
+          "review_time_hours": 479.68,
+          "title": "feat: introduce `snapshotter`"
+        },
+        {
+          "additions": 623,
+          "author": "refcell",
+          "changed_files": 43,
+          "content_signals": {
+            "body_excerpt": "## Summary\n\nDelete the remaining engine priority queue, task enum, trait dispatch, enqueue, drain, and delegated/finalize wrapper structs. The engine processor now publishes direct-operation state changes without a pre-drain step, and Engine is a non-generic state owner with generic methods for the client-specific calls. The legacy dev queue-length RPC now reports zero without carrying queue state through the engine actor.",
+            "changed_files": [
+              {
+                "additions": 3,
+                "changes": 6,
+                "deletions": 3,
+                "filename": "crates/consensus/engine/README.md",
+                "status": "modified"
+              },
+              {
+                "additions": 4,
+                "changes": 9,
+                "deletions": 5,
+                "filename": "crates/consensus/engine/src/lib.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 6,
+                "changes": 21,
+                "deletions": 15,
+                "filename": "crates/consensus/engine/src/metrics/mod.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 234,
+                "changes": 397,
+                "deletions": 163,
+                "filename": "crates/consensus/engine/src/operations/core.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 1,
+                "changes": 2,
+                "deletions": 1,
+                "filename": "crates/consensus/engine/src/operations/mod.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 6,
+                "changes": 15,
+                "deletions": 9,
+                "filename": "crates/consensus/engine/src/operations/tasks/build/error.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 0,
+                "changes": 0,
+                "deletions": 0,
+                "filename": "crates/consensus/engine/src/operations/tasks/build/mod.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 1,
+                "changes": 12,
+                "deletions": 11,
+                "filename": "crates/consensus/engine/src/operations/tasks/consolidate/error.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 0,
+                "changes": 0,
+                "deletions": 0,
+                "filename": "crates/consensus/engine/src/operations/tasks/consolidate/mod.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 0,
+                "changes": 0,
+                "deletions": 0,
+                "filename": "crates/consensus/engine/src/operations/tasks/consolidate/task.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 5,
+                "changes": 10,
+                "deletions": 5,
+                "filename": "crates/consensus/engine/src/operations/tasks/consolidate/task_test.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 1,
+                "changes": 2,
+                "deletions": 1,
+                "filename": "crates/consensus/engine/src/operations/tasks/delegated_forkchoice/direct_test.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 1,
+                "changes": 5,
+                "deletions": 4,
+                "filename": "crates/consensus/engine/src/operations/tasks/delegated_forkchoice/error.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 7,
+                "changes": 8,
+                "deletions": 1,
+                "filename": "crates/consensus/engine/src/operations/tasks/delegated_forkchoice/mod.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 0,
+                "changes": 0,
+                "deletions": 0,
+                "filename": "crates/consensus/engine/src/operations/tasks/finalize/direct_test.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 1,
+                "changes": 4,
+                "deletions": 3,
+                "filename": "crates/consensus/engine/src/operations/tasks/finalize/error.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 1,
+                "changes": 2,
+                "deletions": 1,
+                "filename": "crates/consensus/engine/src/operations/tasks/finalize/mod.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 1,
+                "changes": 4,
+                "deletions": 3,
+                "filename": "crates/consensus/engine/src/operations/tasks/insert/error.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 0,
+                "changes": 0,
+                "deletions": 0,
+                "filename": "crates/consensus/engine/src/operations/tasks/insert/mod.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 4,
+                "changes": 11,
+                "deletions": 7,
+                "filename": "crates/consensus/engine/src/operations/tasks/mod.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 3,
+                "changes": 9,
+                "deletions": 6,
+                "filename": "crates/consensus/engine/src/operations/tasks/seal/error.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 4,
+                "changes": 4,
+                "deletions": 0,
+                "filename": "crates/consensus/engine/src/operations/tasks/seal/mod.rs",
+                "status": "added"
+              },
+              {
+                "additions": 36,
+                "changes": 36,
+                "deletions": 0,
+                "filename": "crates/consensus/engine/src/operations/tasks/severity.rs",
+                "status": "added"
+              },
+              {
+                "additions": 1,
+                "changes": 2,
+                "deletions": 1,
+                "filename": "crates/consensus/engine/src/operations/tasks/synchronize/error.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 0,
+                "changes": 0,
+                "deletions": 0,
+                "filename": "crates/consensus/engine/src/operations/tasks/synchronize/mod.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 3,
+                "changes": 15,
+                "deletions": 12,
+                "filename": "crates/consensus/engine/src/operations/tasks/synchronize/task.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 1,
+                "changes": 2,
+                "deletions": 1,
+                "filename": "crates/consensus/engine/src/operations/tasks/synchronize/task_test.rs",
+                "status": "renamed"
+              },
+              {
+                "additions": 9,
+                "changes": 17,
+                "deletions": 8,
+                "filename": "crates/consensus/engine/src/query.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 0,
+                "changes": 10,
+                "deletions": 10,
+                "filename": "crates/consensus/engine/src/task_queue/tasks/delegated_forkchoice/mod.rs",
+                "status": "removed"
+              },
+              {
+                "additions": 0,
+                "changes": 7,
+                "deletions": 7,
+                "filename": "crates/consensus/engine/src/task_queue/tasks/seal/mod.rs",
+                "status": "removed"
+              },
+              {
+                "additions": 0,
+                "changes": 235,
+                "deletions": 235,
+                "filename": "crates/consensus/engine/src/task_queue/tasks/seal/task.rs",
+                "status": "removed"
+              },
+              {
+                "additions": 0,
+                "changes": 100,
+                "deletions": 100,
+                "filename": "crates/consensus/engine/src/task_queue/tasks/task.rs",
+                "status": "removed"
+              },
+              {
+                "additions": 0,
+                "changes": 57,
+                "deletions": 57,
+                "filename": "crates/consensus/engine/src/task_queue/tasks/util.rs",
+                "status": "removed"
+              },
+              {
+                "additions": 4,
+                "changes": 10,
+                "deletions": 6,
+                "filename": "crates/consensus/service/README.md",
+                "status": "modified"
+              },
+              {
+                "additions": 70,
+                "changes": 167,
+                "deletions": 97,
+                "filename": "crates/consensus/service/src/actors/engine/engine_request_processor.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 45,
+                "changes": 51,
+                "deletions": 6,
+                "filename": "crates/consensus/service/src/actors/engine/error.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 1,
+                "changes": 2,
+                "deletions": 1,
+                "filename": "crates/consensus/service/src/actors/engine/mod.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 1,
+                "changes": 9,
+                "deletions": 8,
+                "filename": "crates/consensus/service/src/actors/engine/rpc_request_processor.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 4,
+                "changes": 7,
+                "deletions": 3,
+                "filename": "crates/consensus/service/src/actors/mod.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 1,
+                "changes": 2,
+                "deletions": 1,
+                "filename": "crates/consensus/service/src/follow/engine.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 15,
+                "changes": 30,
+                "deletions": 15,
+                "filename": "crates/consensus/service/src/lib.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 1,
+                "changes": 4,
+                "deletions": 3,
+                "filename": "crates/consensus/service/src/service/node.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 148,
+                "changes": 153,
+                "deletions": 5,
+                "filename": "crates/consensus/service/tests/actors/engine.rs",
+                "status": "modified"
+              }
+            ],
+            "commit_subjects": [
+              "refactor(consensus): delete engine task queue",
+              "fix(consensus): satisfy engine clippy bounds",
+              "Simplify consensus engine operations"
+            ],
+            "modules": [
+              "crates"
+            ],
+            "summary_basis": [
+              "PR body",
+              "43 changed files",
+              "3 commits"
+            ]
+          },
+          "current_status": "merged",
+          "deletions": 814,
+          "event_types": [
+            "merged"
+          ],
+          "evidence": "1437 LOC, 43 files, labels: consensus, stacked",
+          "importance_score": 7512,
+          "labels": [
+            "consensus",
+            "stacked"
+          ],
+          "number": 2538,
+          "review_time_hours": 500.55,
+          "title": "refactor(consensus): Delete Engine Task Queue"
+        },
+        {
+          "additions": 2521,
+          "author": "0x00101010",
+          "changed_files": 12,
+          "content_signals": {
+            "body_excerpt": "Adds V2 proof storage tables, history-aware cursors, and current-state persistence so proof reads can reconstruct historical state from old-value changesets. The MDBX backend now seeds initial state into V2 current tables and keeps V2 history in sync across writes, prune, unwind, and replacement flows.",
+            "changed_files": [
+              {
+                "additions": 11,
+                "changes": 41,
+                "deletions": 30,
+                "filename": "crates/execution/trie/src/db/batch.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 499,
+                "changes": 503,
+                "deletions": 4,
+                "filename": "crates/execution/trie/src/db/cursor.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 2,
+                "changes": 3,
+                "deletions": 1,
+                "filename": "crates/execution/trie/src/db/mod.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 220,
+                "changes": 220,
+                "deletions": 0,
+                "filename": "crates/execution/trie/src/db/models/key.rs",
+                "status": "added"
+              },
+              {
+                "additions": 92,
+                "changes": 96,
+                "deletions": 4,
+                "filename": "crates/execution/trie/src/db/models/mod.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 3,
+                "changes": 3,
+                "deletions": 0,
+                "filename": "crates/execution/trie/src/db/models/storage.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 104,
+                "changes": 104,
+                "deletions": 0,
+                "filename": "crates/execution/trie/src/db/models/value.rs",
+                "status": "added"
+              },
+              {
+                "additions": 1520,
+                "changes": 4520,
+                "deletions": 3000,
+                "filename": "crates/execution/trie/src/db/store.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 6,
+                "changes": 6,
+                "deletions": 0,
+                "filename": "crates/execution/trie/src/error.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 2,
+                "changes": 5,
+                "deletions": 3,
+                "filename": "crates/execution/trie/src/provider.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 30,
+                "changes": 39,
+                "deletions": 9,
+                "filename": "crates/execution/trie/src/prune/pruner.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 32,
+                "changes": 42,
+                "deletions": 10,
+                "filename": "crates/execution/trie/tests/live.rs",
+                "status": "modified"
+              }
+            ],
+            "commit_subjects": [
+              "feat(proofs): add v2 proof storage schema",
+              "feat(proofs): add v2 proof storage cursors",
+              "feat(proofs): persist v2 proof storage state",
+              "feat(proofs): make v2 proof state authoritative",
+              "feat(proofs): use v2 cursors for proof batches",
+              "fix(proofs): satisfy v2 cursor clippy",
+              "fix(proofs): clean proof provider test clippy",
+              "fix(proofs): clean live proof test clippy",
+              "fix(proofs): support metrics storage test helpers",
+              "fix(proofs): harden v2 key decoding",
+              "fix(proofs): repair v2 trie cursor misses",
+              "fix(proofs): clean v2 clippy warnings",
+              "fix(proofs): address v2 cursor review notes",
+              "fix(proofs): remove stale cursor imports",
+              "fix(proofs): address v2 review edge cases",
+              "fix(proofs): clarify v2 cursor history semantics",
+              "fix(proofs): borrow v2 trie subkey conversion"
+            ],
+            "modules": [
+              "crates"
+            ],
+            "summary_basis": [
+              "PR body",
+              "12 changed files",
+              "17 commits"
+            ]
+          },
+          "current_status": "draft",
+          "deletions": 3061,
+          "event_types": [
+            "opened"
+          ],
+          "evidence": "5582 LOC, 12 files, labels: none",
+          "importance_score": 7382,
+          "labels": [],
+          "number": 2918,
+          "review_time_hours": null,
+          "title": "feat(proofs): add V2 proof storage"
+        },
+        {
+          "additions": 17,
+          "author": "refcell",
+          "changed_files": 3,
+          "content_signals": {
+            "body_excerpt": "## Summary\r\n\r\nThis schedules the Zeronet Beryl activation for June 1, 2026 at 1:00pm EDT. It updates the built-in chain config, keeps the embedded Zeronet genesis Base fork stanza aligned, and adjusts the focused activation assertions for the new timestamp.\r\n\r\nTimestamp verified with https://www.unixtimestamp.com/\r\n\r\n\r\n<img width=\"732\" height=\"447\" alt=\"Screenshot 2026-05-26 at 10 21 29\u202fAM\" src=\"https://github.com/user-attachments/assets/475aa2f5-1f6f-4710-ae42-a4bf1a947c1e\" />",
+            "changed_files": [
+              {
+                "additions": 4,
+                "changes": 5,
+                "deletions": 1,
+                "filename": "crates/common/chains/res/genesis/zeronet_base.json",
+                "status": "modified"
+              },
+              {
+                "additions": 6,
+                "changes": 12,
+                "deletions": 6,
+                "filename": "crates/common/chains/src/chain.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 7,
+                "changes": 8,
+                "deletions": 1,
+                "filename": "crates/common/chains/src/config.rs",
+                "status": "modified"
+              }
+            ],
+            "commit_subjects": [
+              "feat(chains): schedule zeronet beryl activation"
+            ],
+            "modules": [
+              "crates"
+            ],
+            "summary_basis": [
+              "PR body",
+              "3 changed files",
+              "1 commits"
+            ]
+          },
+          "current_status": "merged",
+          "deletions": 8,
+          "event_types": [
+            "merged",
+            "opened"
+          ],
+          "evidence": "25 LOC, 3 files, labels: feature",
+          "importance_score": 5100,
+          "labels": [
+            "feature"
+          ],
+          "number": 2925,
+          "review_time_hours": 0.7,
+          "title": "feat(chains): Schedule Zeronet Beryl Activation"
+        },
+        {
+          "additions": 130,
+          "author": "github-actions[bot]",
+          "changed_files": 2,
+          "content_signals": {
+            "body_excerpt": "## Summary\n\nAuto-generated PR to sync Cargo.toml version with release branch.\n\n- **Release branch**: `releases/v0.10.0`\n- **Target version**: `0.10.0`\n\nOnce merged, run the **Create Release** workflow to build a release candidate.",
+            "changed_files": [
+              {
+                "additions": 129,
+                "changes": 258,
+                "deletions": 129,
+                "filename": "Cargo.lock",
+                "status": "modified"
+              },
+              {
+                "additions": 1,
+                "changes": 2,
+                "deletions": 1,
+                "filename": "Cargo.toml",
+                "status": "modified"
+              }
+            ],
+            "commit_subjects": [
+              "chore(release): set version to 0.10.0"
+            ],
+            "modules": [
+              "root"
+            ],
+            "summary_basis": [
+              "PR body",
+              "2 changed files",
+              "1 commits"
+            ]
+          },
+          "current_status": "merged",
+          "deletions": 130,
+          "event_types": [
+            "opened"
+          ],
+          "evidence": "260 LOC, 2 files, labels: none",
+          "importance_score": 4310,
+          "labels": [],
+          "number": 2928,
+          "review_time_hours": 0.17,
+          "title": "chore(release): set version to 0.10.0"
+        },
+        {
+          "additions": 1134,
+          "author": "haardikk21",
+          "changed_files": 8,
+          "content_signals": {
+            "body_excerpt": "## Summary\n\nPR4 of the EIP-8130 (account abstraction) rollout. Flips the devp2p transaction-pool validator from PR3's hard-reject of type-byte 0x7D to a **conservative accept** path that runs every spec-mandated structural check while still keeping all execution-time semantics (verifier dispatch, state lookups, fork gating) deferred to later PRs.\n\nRPC ingress (ingress-rpc + execution-rpc) remains closed; local-origin submissions from devp2p are also rejected. Hardfork gating lands in PR6 against **Cobalt** (the upgrade after Beryl; `BaseUpgrade::Cobalt` doesn't exist in this repo yet and will be added by PR6).\n\n## What changed\n\n**Sender recovery (commit 1)** \u2014 fixes a hidden break in PR3: `BasePooledTransaction::SignerRecoverable` for the EIP-8130 variant was previously returning `tx.explicit_sender()` unconditionally, meaning EOA-path transactions (`sender = None`) could never be indexed in the pool. Adds `Eip8130Signed::recover_eoa_sender()` which:\n\n- returns `Ok(None)` for configured-owner txs (sender already explicit)\n- recovers from the 65-byte `sender_auth` against `sender_signature_hash()` for EOA txs\n- returns `Err` on malformed payloads\n\n**Mempool policy constants (comm...",
+            "changed_files": [
+              {
+                "additions": 1,
+                "changes": 1,
+                "deletions": 0,
+                "filename": "Cargo.lock",
+                "status": "modified"
+              },
+              {
+                "additions": 1,
+                "changes": 1,
+                "deletions": 0,
+                "filename": "crates/common/consensus/Cargo.toml",
+                "status": "modified"
+              },
+              {
+                "additions": 32,
+                "changes": 33,
+                "deletions": 1,
+                "filename": "crates/common/consensus/src/transaction/eip8130/constants.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 161,
+                "changes": 161,
+                "deletions": 0,
+                "filename": "crates/common/consensus/src/transaction/eip8130/signed.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 66,
+                "changes": 77,
+                "deletions": 11,
+                "filename": "crates/common/consensus/src/transaction/envelope.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 3,
+                "changes": 8,
+                "deletions": 5,
+                "filename": "crates/common/consensus/src/transaction/pooled.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 18,
+                "changes": 23,
+                "deletions": 5,
+                "filename": "crates/execution/txpool/src/transaction.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 852,
+                "changes": 865,
+                "deletions": 13,
+                "filename": "crates/execution/txpool/src/validator.rs",
+                "status": "modified"
+              }
+            ],
+            "commit_subjects": [
+              "feat(consensus): recover EOA sender for EIP-8130 pool indexing",
+              "feat(consensus): add EIP-8130 mempool policy constants",
+              "feat(txpool): accept EIP-8130 with structural validation",
+              "test(txpool): EIP-8130 structural validation",
+              "fix(txpool): EIP-8130 already-expired and ConfigChange owner_changes",
+              "fix(consensus): honor unchecked EIP-8130 sender recovery contract",
+              "fix(consensus): EIP-8130 envelope honors EOA recovery + checked/unchecked split",
+              "fix(txpool): EIP-8130 cap owner entries + revoke-check on config auth",
+              "fix(txpool,consensus): EIP-8130 unify auth verifier range + dedupe recovery"
+            ],
+            "modules": [
+              "crates",
+              "root"
+            ],
+            "summary_basis": [
+              "PR body",
+              "8 changed files",
+              "9 commits"
+            ]
+          },
+          "current_status": "open",
+          "deletions": 35,
+          "event_types": [
+            "opened"
+          ],
+          "evidence": "1169 LOC, 8 files, labels: none",
+          "importance_score": 3869,
+          "labels": [],
+          "number": 2926,
+          "review_time_hours": null,
+          "title": "feat(txpool): EIP-8130 conservative-accept gate (PR4 of N)"
+        },
+        {
+          "additions": 1,
+          "author": "github-actions[bot]",
+          "changed_files": 1,
+          "content_signals": {
+            "body_excerpt": "## Summary\n\nRefreshes `crates/proof/succinct/elf/manifest.toml` from a fresh SP1 ELF build after a merge to trunk (`main`).\n\nGenerated by https://github.com/base/base/actions/runs/26483962587.\n\n## Validation\n\n- `just succinct build-elfs`\n- `just succinct write-manifest`\n- `python3 etc/scripts/local/check-elf-manifest.py --print-hashes crates/proof/succinct/elf/manifest.toml crates/proof/succinct/elf`\n\n## Hashes\n\n```text\nrange-elf-embedded: expected=\"45cb78e7f82403dd10e67301e22e3e128ec8df511b7d6a22a3eb33b464afd0a7\" actual=\"45cb78e7f82403dd10e67301e22e3e128ec8df511b7d6a22a3eb33b464afd0a7\"\naggregation-elf: expected=\"baf0a889a5c493d780235b14f21e4f6c94feb8d4d8e138224f0d7d8572c944b9\" actual=\"baf0a889a5c493d780235b14f21e4f6c94feb8d4d8e138224f0d7d8572c944b9\"\n```\n\n## Diff\n\n```diff\ndiff --git a/crates/proof/succinct/elf/manifest.toml b/crates/proof/succinct/elf/manifest.toml\nindex 88a50a0..adc9af2 100644\n--- a/crates/proof/succinct/elf/manifest.toml\n+++ b/crates/proof/succinct/elf/manifest.toml\n@@ -17,7 +17,7 @@\n \n [[elfs]]\n name = \"range-elf-embedded\"\n-sha256 = \"fc20d749763f788b9c54cac58399d09eae1396d3e187cc0c22240b941f4ad0ed\"\n+sha256 = \"45cb78e7f82403dd10e67301e22e3e128ec8df511b7d6a22a3...",
+            "changed_files": [
+              {
+                "additions": 1,
+                "changes": 2,
+                "deletions": 1,
+                "filename": "crates/proof/succinct/elf/manifest.toml",
+                "status": "modified"
+              }
+            ],
+            "commit_subjects": [
+              "fix(proof): refresh succinct elf manifest"
+            ],
+            "modules": [
+              "crates"
+            ],
+            "summary_basis": [
+              "PR body",
+              "1 changed files",
+              "1 commits"
+            ]
+          },
+          "current_status": "open",
+          "deletions": 1,
+          "event_types": [
+            "opened"
+          ],
+          "evidence": "2 LOC, 1 files, labels: none",
+          "importance_score": 2527,
+          "labels": [],
+          "number": 2927,
+          "review_time_hours": null,
+          "title": "fix(proof): refresh succinct elf manifest"
+        },
+        {
+          "additions": 39,
+          "author": "sethoshi18",
+          "changed_files": 4,
+          "content_signals": {
+            "body_excerpt": "This commit resolves three high-value items identified during a repository audit:\r\n\r\n1. Websocket Proxy Filter Refactor: Replaced brittle `unwrap()` pattern during string parsing in `crates/infra/websocket-proxy/src/filter.rs` with safe `let Ok(value)` destructuring to improve stability and avoid potential panics.\r\n\r\n2. S3 Audit Log Event Support: Extended `archive_event` in `crates/infra/audit/src/storage.rs` to support handling all `BundleEvent` variants instead of explicitly returning an error. Fallback uses either the bundle hash (if present) or the bundle ID.\r\n\r\n3. S3 Audit Log Exponential Backoff: Implemented exponential backoff using the `backon` crate to retry `put_object` requests when uploading events to S3. This resolves a known issue (TODO) where transient network failures would drop audit logs.",
+            "changed_files": [
+              {
+                "additions": 1,
+                "changes": 1,
+                "deletions": 0,
+                "filename": "Cargo.lock",
+                "status": "modified"
+              },
+              {
+                "additions": 1,
+                "changes": 1,
+                "deletions": 0,
+                "filename": "crates/infra/audit/Cargo.toml",
+                "status": "modified"
+              },
+              {
+                "additions": 34,
+                "changes": 52,
+                "deletions": 18,
+                "filename": "crates/infra/audit/src/storage.rs",
+                "status": "modified"
+              },
+              {
+                "additions": 3,
+                "changes": 8,
+                "deletions": 5,
+                "filename": "crates/infra/websocket-proxy/src/filter.rs",
+                "status": "modified"
+              }
+            ],
+            "commit_subjects": [
+              "fix: improve reliability of websocket proxy and s3 audit logs"
+            ],
+            "modules": [
+              "crates",
+              "root"
+            ],
+            "summary_basis": [
+              "PR body",
+              "4 changed files",
+              "1 commits"
+            ]
+          },
+          "current_status": "closed_unmerged",
+          "deletions": 23,
+          "event_types": [
+            "closed_unmerged",
+            "opened"
+          ],
+          "evidence": "62 LOC, 4 files, labels: none",
+          "importance_score": 662,
+          "labels": [],
+          "number": 2921,
+          "review_time_hours": null,
+          "title": "fix: improve reliability of websocket proxy and s3 audit logs"
+        },
+        {
+          "additions": 38,
+          "author": "Alicepoltora",
+          "changed_files": 1,
+          "content_signals": {
+            "body_excerpt": "## Summary\n\n`decode_eip_1559_params()` returns `(elasticity, denominator)` (documented in `HoloceneExtraData::decode_params`). The pattern:\n\n```rust\nSome((0, e)) if e != 0 => {\n    error!(\"Holocene EIP1559 params cannot have a 0 denominator unless elasticity is also 0...\");\n```\n\nfires when **elasticity = 0** and denominator \u2260 0, but the error message says **\"0 denominator\"** \u2014 the two fields are swapped.\n\n## Root cause\n\nThe tuple returned by `decode_eip_1559_params()` is `(elasticity_multiplier, max_change_denominator)`. The destructuring variable names `ae` / `ad` (`a`ttribute `e`lasticity / `a`ttribute `d`enominator) confirm the intent, but the prose in the error message accidentally describes the opposite field.\n\n## Changes\n\n1. **Fix the error message** for the zero-elasticity arm: `\"0 denominator\"` \u2192 `\"0 elasticity multiplier\"`.\n2. **Add the missing guard** for the symmetric case `Some((ae, 0)) if ae != 0` \u2014 non-zero elasticity with a zero denominator was silently accepted and would cause a division-by-zero in downstream base fee calculations.\n3. **Update `AttributesMismatch::InvalidEIP1559ParamsCombination`** doc comment to cover both invalid cases.\n4. **Fix the misleading ...",
+            "changed_files": [
+              {
+                "additions": 38,
+                "changes": 40,
+                "deletions": 2,
+                "filename": "crates/consensus/engine/src/attributes.rs",
+                "status": "modified"
+              }
+            ],
+            "commit_subjects": [
+              "fix(engine): correct swapped EIP-1559 error message and add missing zero-denominator check"
+            ],
+            "modules": [
+              "crates"
+            ],
+            "summary_basis": [
+              "PR body",
+              "1 changed files",
+              "1 commits"
+            ]
+          },
+          "current_status": "closed_unmerged",
+          "deletions": 2,
+          "event_types": [
+            "closed_unmerged",
+            "opened"
+          ],
+          "evidence": "40 LOC, 1 files, labels: none",
+          "importance_score": 565,
+          "labels": [],
+          "number": 2920,
+          "review_time_hours": null,
+          "title": "fix(engine): correct swapped EIP-1559 error message and add missing zero-denominator guard"
+        },
+        {
+          "additions": 3,
+          "author": "Danielkis97",
+          "changed_files": 1,
+          "content_signals": {
+            "body_excerpt": "## Summary\r\n\r\nFixes a panic in `StateProcessor::build_pending_state` when called with empty flashblock input.\r\n\r\nThe previous code called `.unwrap()` on the minimum key of an empty `BTreeMap`, which could panic. This now returns `Ok(None)` when there is no pending state to build.\r\n\r\nFixes #2785\r\n\r\n## Testing\r\n\r\n- `cargo +nightly fmt`\r\n\r\nI attempted `cargo check -p base-flashblocks` locally on Windows, but the build is blocked by a native `librocksdb-sys`/MSVC toolchain error unrelated to this change.",
+            "changed_files": [
+              {
+                "additions": 3,
+                "changes": 4,
+                "deletions": 1,
+                "filename": "crates/execution/flashblocks/src/processor.rs",
+                "status": "modified"
+              }
+            ],
+            "commit_subjects": [
+              "fix(flashblocks): handle empty pending state input"
+            ],
+            "modules": [
+              "crates"
+            ],
+            "summary_basis": [
+              "PR body",
+              "1 changed files",
+              "1 commits"
+            ]
+          },
+          "current_status": "closed_unmerged",
+          "deletions": 1,
+          "event_types": [
+            "closed_unmerged",
+            "opened"
+          ],
+          "evidence": "4 LOC, 1 files, labels: none",
+          "importance_score": 529,
+          "labels": [],
+          "number": 2917,
+          "review_time_hours": null,
+          "title": "fix(flashblocks): handle empty pending state input"
+        }
+      ],
+      "pr_status": {
+        "closed_unmerged": [
+          {
+            "additions": 39,
+            "changed_files": 4,
+            "closed_at": "2026-05-26T07:35:00Z",
+            "content_signals": {
+              "body_excerpt": "This commit resolves three high-value items identified during a repository audit:\r\n\r\n1. Websocket Proxy Filter Refactor: Replaced brittle `unwrap()` pattern during string parsing in `crates/infra/websocket-proxy/src/filter.rs` with safe `let Ok(value)` destructuring to improve stability and avoid potential panics.\r\n\r\n2. S3 Audit Log Event Support: Extended `archive_event` in `crates/infra/audit/src/storage.rs` to support handling all `BundleEvent` variants instead of explicitly returning an error. Fallback uses either the bundle hash (if present) or the bundle ID.\r\n\r\n3. S3 Audit Log Exponential Backoff: Implemented exponential backoff using the `backon` crate to retry `put_object` requests when uploading events to S3. This resolves a known issue (TODO) where transient network failures would drop audit logs.",
+              "changed_files": [
+                {
+                  "additions": 1,
+                  "changes": 1,
+                  "deletions": 0,
+                  "filename": "Cargo.lock",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 1,
+                  "deletions": 0,
+                  "filename": "crates/infra/audit/Cargo.toml",
+                  "status": "modified"
+                },
+                {
+                  "additions": 34,
+                  "changes": 52,
+                  "deletions": 18,
+                  "filename": "crates/infra/audit/src/storage.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 3,
+                  "changes": 8,
+                  "deletions": 5,
+                  "filename": "crates/infra/websocket-proxy/src/filter.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix: improve reliability of websocket proxy and s3 audit logs"
+              ],
+              "modules": [
+                "crates",
+                "root"
+              ],
+              "summary_basis": [
+                "PR body",
+                "4 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-26T07:34:39Z",
+            "current_status": "closed_unmerged",
+            "deletions": 23,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2921,
+            "review_time_hours": null,
+            "state": "closed",
+            "title": "fix: improve reliability of websocket proxy and s3 audit logs",
+            "updated_at": "2026-05-26T07:35:00Z",
+            "user": "sethoshi18"
+          },
+          {
+            "additions": 38,
+            "changed_files": 1,
+            "closed_at": "2026-05-25T22:56:34Z",
+            "content_signals": {
+              "body_excerpt": "## Summary\n\n`decode_eip_1559_params()` returns `(elasticity, denominator)` (documented in `HoloceneExtraData::decode_params`). The pattern:\n\n```rust\nSome((0, e)) if e != 0 => {\n    error!(\"Holocene EIP1559 params cannot have a 0 denominator unless elasticity is also 0...\");\n```\n\nfires when **elasticity = 0** and denominator \u2260 0, but the error message says **\"0 denominator\"** \u2014 the two fields are swapped.\n\n## Root cause\n\nThe tuple returned by `decode_eip_1559_params()` is `(elasticity_multiplier, max_change_denominator)`. The destructuring variable names `ae` / `ad` (`a`ttribute `e`lasticity / `a`ttribute `d`enominator) confirm the intent, but the prose in the error message accidentally describes the opposite field.\n\n## Changes\n\n1. **Fix the error message** for the zero-elasticity arm: `\"0 denominator\"` \u2192 `\"0 elasticity multiplier\"`.\n2. **Add the missing guard** for the symmetric case `Some((ae, 0)) if ae != 0` \u2014 non-zero elasticity with a zero denominator was silently accepted and would cause a division-by-zero in downstream base fee calculations.\n3. **Update `AttributesMismatch::InvalidEIP1559ParamsCombination`** doc comment to cover both invalid cases.\n4. **Fix the misleading ...",
+              "changed_files": [
+                {
+                  "additions": 38,
+                  "changes": 40,
+                  "deletions": 2,
+                  "filename": "crates/consensus/engine/src/attributes.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix(engine): correct swapped EIP-1559 error message and add missing zero-denominator check"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "1 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-25T22:56:12Z",
+            "current_status": "closed_unmerged",
+            "deletions": 2,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2920,
+            "review_time_hours": null,
+            "state": "closed",
+            "title": "fix(engine): correct swapped EIP-1559 error message and add missing zero-denominator guard",
+            "updated_at": "2026-05-25T22:56:34Z",
+            "user": "Alicepoltora"
+          },
+          {
+            "additions": 3,
+            "changed_files": 1,
+            "closed_at": "2026-05-25T19:42:16Z",
+            "content_signals": {
+              "body_excerpt": "## Summary\r\n\r\nFixes a panic in `StateProcessor::build_pending_state` when called with empty flashblock input.\r\n\r\nThe previous code called `.unwrap()` on the minimum key of an empty `BTreeMap`, which could panic. This now returns `Ok(None)` when there is no pending state to build.\r\n\r\nFixes #2785\r\n\r\n## Testing\r\n\r\n- `cargo +nightly fmt`\r\n\r\nI attempted `cargo check -p base-flashblocks` locally on Windows, but the build is blocked by a native `librocksdb-sys`/MSVC toolchain error unrelated to this change.",
+              "changed_files": [
+                {
+                  "additions": 3,
+                  "changes": 4,
+                  "deletions": 1,
+                  "filename": "crates/execution/flashblocks/src/processor.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix(flashblocks): handle empty pending state input"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "1 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-25T19:41:57Z",
+            "current_status": "closed_unmerged",
+            "deletions": 1,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2917,
+            "review_time_hours": null,
+            "state": "closed",
+            "title": "fix(flashblocks): handle empty pending state input",
+            "updated_at": "2026-05-25T19:42:16Z",
+            "user": "Danielkis97"
+          },
+          {
+            "additions": 1,
+            "changed_files": 1,
+            "closed_at": "2026-05-25T22:45:00Z",
+            "content_signals": {
+              "body_excerpt": "## Bug\n\nIn `find_starting_forkchoice()`, the safe block search cursor was initialized with `current_fc.un_safe` (the unsafe/unconfirmed head) instead of `current_fc.safe` (the known-safe head).\n\n```rust\n// Before (buggy)\nlet mut safe_cursor = current_fc.un_safe;\n\n// After (fixed)\nlet mut safe_cursor = current_fc.safe;\n```\n\n## Impact\n\nOn every node restart, the algorithm unnecessarily traverses every block between the unsafe head and the actual safe head before finding the correct safe block. In practice, the unsafe head can be hundreds or thousands of blocks ahead of the safe head (the sequencing window on Base mainnet is 3600 L1 blocks), making sync start significantly slower than it needs to be.\n\n## Why the fix is safe\n\nThe loop already handles the general case correctly: it checks `is_behind_sequence_window || is_finalized || is_genesis` and walks backwards if needed. Starting from `current_fc.safe` means:\n- If the existing safe block already satisfies the sequencing window condition (the common case), the loop exits immediately.\n- If for some reason the safe block needs to be pushed further back, the loop continues walking backwards exactly as before.\n\nCorrectness is unchang...",
+              "changed_files": [
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/sync/mod.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix(sync): initialize safe_cursor from safe FC instead of unsafe"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "1 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-25T22:44:40Z",
+            "current_status": "closed_unmerged",
+            "deletions": 1,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2919,
+            "review_time_hours": null,
+            "state": "closed",
+            "title": "fix(sync): initialize safe_cursor from safe FC instead of unsafe",
+            "updated_at": "2026-05-25T22:45:00Z",
+            "user": "Alicepoltora"
+          }
+        ],
+        "draft": [
+          {
+            "additions": 2521,
+            "changed_files": 12,
+            "closed_at": null,
+            "content_signals": {
+              "body_excerpt": "Adds V2 proof storage tables, history-aware cursors, and current-state persistence so proof reads can reconstruct historical state from old-value changesets. The MDBX backend now seeds initial state into V2 current tables and keeps V2 history in sync across writes, prune, unwind, and replacement flows.",
+              "changed_files": [
+                {
+                  "additions": 11,
+                  "changes": 41,
+                  "deletions": 30,
+                  "filename": "crates/execution/trie/src/db/batch.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 499,
+                  "changes": 503,
+                  "deletions": 4,
+                  "filename": "crates/execution/trie/src/db/cursor.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 2,
+                  "changes": 3,
+                  "deletions": 1,
+                  "filename": "crates/execution/trie/src/db/mod.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 220,
+                  "changes": 220,
+                  "deletions": 0,
+                  "filename": "crates/execution/trie/src/db/models/key.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 92,
+                  "changes": 96,
+                  "deletions": 4,
+                  "filename": "crates/execution/trie/src/db/models/mod.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 3,
+                  "changes": 3,
+                  "deletions": 0,
+                  "filename": "crates/execution/trie/src/db/models/storage.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 104,
+                  "changes": 104,
+                  "deletions": 0,
+                  "filename": "crates/execution/trie/src/db/models/value.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 1520,
+                  "changes": 4520,
+                  "deletions": 3000,
+                  "filename": "crates/execution/trie/src/db/store.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 6,
+                  "changes": 6,
+                  "deletions": 0,
+                  "filename": "crates/execution/trie/src/error.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 2,
+                  "changes": 5,
+                  "deletions": 3,
+                  "filename": "crates/execution/trie/src/provider.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 30,
+                  "changes": 39,
+                  "deletions": 9,
+                  "filename": "crates/execution/trie/src/prune/pruner.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 32,
+                  "changes": 42,
+                  "deletions": 10,
+                  "filename": "crates/execution/trie/tests/live.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "feat(proofs): add v2 proof storage schema",
+                "feat(proofs): add v2 proof storage cursors",
+                "feat(proofs): persist v2 proof storage state",
+                "feat(proofs): make v2 proof state authoritative",
+                "feat(proofs): use v2 cursors for proof batches",
+                "fix(proofs): satisfy v2 cursor clippy",
+                "fix(proofs): clean proof provider test clippy",
+                "fix(proofs): clean live proof test clippy",
+                "fix(proofs): support metrics storage test helpers",
+                "fix(proofs): harden v2 key decoding",
+                "fix(proofs): repair v2 trie cursor misses",
+                "fix(proofs): clean v2 clippy warnings",
+                "fix(proofs): address v2 cursor review notes",
+                "fix(proofs): remove stale cursor imports",
+                "fix(proofs): address v2 review edge cases",
+                "fix(proofs): clarify v2 cursor history semantics",
+                "fix(proofs): borrow v2 trie subkey conversion"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "12 changed files",
+                "17 commits"
+              ]
+            },
+            "created_at": "2026-05-25T21:11:03Z",
+            "current_status": "draft",
+            "deletions": 3061,
+            "draft": true,
+            "labels": [],
+            "merged_at": null,
+            "number": 2918,
+            "review_time_hours": null,
+            "state": "open",
+            "title": "feat(proofs): add V2 proof storage",
+            "updated_at": "2026-05-26T23:00:28Z",
+            "user": "0x00101010"
+          }
+        ],
+        "merged": [
+          {
+            "additions": 2538,
+            "changed_files": 14,
+            "closed_at": "2026-05-26T15:43:24Z",
+            "content_signals": {
+              "body_excerpt": "co-authored with claude\r\n\r\nOverview:\r\n- Introduces `bin/snappy` and `infra/snappy`. The bin will be ran as a sidecar against `base-node-reth` and `base-consensus` and will pause the `base-node-reth` container, run `Reth::SnapshotManifestCommand` to produce a manifest.json and all the tar files, and unpause `base-node-reth`\r\n- Utilizes the `bollard` package to manage the pause/unpause state of docker containers\r\n- Utilizes the S3 SDK as R2/MinIO are all S3-API compatible \r\n\r\nTests:\r\n- Wrote integration tests (pause, unpause, uploading to MinIO)\r\n- Wrote an e2e test (pause -> upload -> unpause)\r\n\r\nUp next:\r\n- [ ] Wiring up the `reth download` command to `crates/execution`\r\n- [ ] Optimizations to upload only diffs. That is, not uploading committed static files anymore",
+              "changed_files": [
+                {
+                  "additions": 43,
+                  "changes": 45,
+                  "deletions": 2,
+                  "filename": "Cargo.lock",
+                  "status": "modified"
+                },
+                {
+                  "additions": 8,
+                  "changes": 8,
+                  "deletions": 0,
+                  "filename": "Cargo.toml",
+                  "status": "modified"
+                },
+                {
+                  "additions": 27,
+                  "changes": 27,
+                  "deletions": 0,
+                  "filename": "bin/snapshotter/Cargo.toml",
+                  "status": "added"
+                },
+                {
+                  "additions": 69,
+                  "changes": 69,
+                  "deletions": 0,
+                  "filename": "bin/snapshotter/main.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 38,
+                  "changes": 38,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/Cargo.toml",
+                  "status": "added"
+                },
+                {
+                  "additions": 37,
+                  "changes": 37,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/README.md",
+                  "status": "added"
+                },
+                {
+                  "additions": 86,
+                  "changes": 86,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/src/config.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 108,
+                  "changes": 108,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/src/container.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 23,
+                  "changes": 23,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/src/lib.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 146,
+                  "changes": 146,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/src/orchestrator.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 794,
+                  "changes": 794,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/src/snapshot.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 454,
+                  "changes": 454,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/src/upload.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 42,
+                  "changes": 42,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/tests/common/mod.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 663,
+                  "changes": 663,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/tests/e2e_test.rs",
+                  "status": "added"
+                }
+              ],
+              "commit_subjects": [
+                "spike",
+                "use SnapshotCommand wiring + similar manifest structure + add e2e",
+                "rename + err handling + parallelize + creds + nits + multi-part upload",
+                "perf: snapshotter to only upload diffs for static files (#2583)",
+                "perf: skip compression on finalized static files (#2700)",
+                "feedback"
+              ],
+              "modules": [
+                "bin",
+                "crates",
+                "root"
+              ],
+              "summary_basis": [
+                "PR body",
+                "14 changed files",
+                "6 commits"
+              ]
+            },
+            "created_at": "2026-05-06T16:02:48Z",
+            "current_status": "merged",
+            "deletions": 2,
+            "draft": false,
+            "labels": [
+              "active"
+            ],
+            "merged_at": "2026-05-26T15:43:24Z",
+            "number": 2550,
+            "review_time_hours": 479.68,
+            "state": "closed",
+            "title": "feat: introduce `snapshotter`",
+            "updated_at": "2026-05-26T17:23:56Z",
+            "user": "wlawt"
+          },
+          {
+            "additions": 623,
+            "changed_files": 43,
+            "closed_at": "2026-05-26T14:45:43Z",
+            "content_signals": {
+              "body_excerpt": "## Summary\n\nDelete the remaining engine priority queue, task enum, trait dispatch, enqueue, drain, and delegated/finalize wrapper structs. The engine processor now publishes direct-operation state changes without a pre-drain step, and Engine is a non-generic state owner with generic methods for the client-specific calls. The legacy dev queue-length RPC now reports zero without carrying queue state through the engine actor.",
+              "changed_files": [
+                {
+                  "additions": 3,
+                  "changes": 6,
+                  "deletions": 3,
+                  "filename": "crates/consensus/engine/README.md",
+                  "status": "modified"
+                },
+                {
+                  "additions": 4,
+                  "changes": 9,
+                  "deletions": 5,
+                  "filename": "crates/consensus/engine/src/lib.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 6,
+                  "changes": 21,
+                  "deletions": 15,
+                  "filename": "crates/consensus/engine/src/metrics/mod.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 234,
+                  "changes": 397,
+                  "deletions": 163,
+                  "filename": "crates/consensus/engine/src/operations/core.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/operations/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 6,
+                  "changes": 15,
+                  "deletions": 9,
+                  "filename": "crates/consensus/engine/src/operations/tasks/build/error.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 0,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/build/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 12,
+                  "deletions": 11,
+                  "filename": "crates/consensus/engine/src/operations/tasks/consolidate/error.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 0,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/consolidate/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 0,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/consolidate/task.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 5,
+                  "changes": 10,
+                  "deletions": 5,
+                  "filename": "crates/consensus/engine/src/operations/tasks/consolidate/task_test.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/operations/tasks/delegated_forkchoice/direct_test.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 5,
+                  "deletions": 4,
+                  "filename": "crates/consensus/engine/src/operations/tasks/delegated_forkchoice/error.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 7,
+                  "changes": 8,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/operations/tasks/delegated_forkchoice/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 0,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/finalize/direct_test.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 4,
+                  "deletions": 3,
+                  "filename": "crates/consensus/engine/src/operations/tasks/finalize/error.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/operations/tasks/finalize/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 4,
+                  "deletions": 3,
+                  "filename": "crates/consensus/engine/src/operations/tasks/insert/error.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 0,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/insert/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 4,
+                  "changes": 11,
+                  "deletions": 7,
+                  "filename": "crates/consensus/engine/src/operations/tasks/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 3,
+                  "changes": 9,
+                  "deletions": 6,
+                  "filename": "crates/consensus/engine/src/operations/tasks/seal/error.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 4,
+                  "changes": 4,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/seal/mod.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 36,
+                  "changes": 36,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/severity.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/operations/tasks/synchronize/error.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 0,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/synchronize/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 3,
+                  "changes": 15,
+                  "deletions": 12,
+                  "filename": "crates/consensus/engine/src/operations/tasks/synchronize/task.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/operations/tasks/synchronize/task_test.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 9,
+                  "changes": 17,
+                  "deletions": 8,
+                  "filename": "crates/consensus/engine/src/query.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 0,
+                  "changes": 10,
+                  "deletions": 10,
+                  "filename": "crates/consensus/engine/src/task_queue/tasks/delegated_forkchoice/mod.rs",
+                  "status": "removed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 7,
+                  "deletions": 7,
+                  "filename": "crates/consensus/engine/src/task_queue/tasks/seal/mod.rs",
+                  "status": "removed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 235,
+                  "deletions": 235,
+                  "filename": "crates/consensus/engine/src/task_queue/tasks/seal/task.rs",
+                  "status": "removed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 100,
+                  "deletions": 100,
+                  "filename": "crates/consensus/engine/src/task_queue/tasks/task.rs",
+                  "status": "removed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 57,
+                  "deletions": 57,
+                  "filename": "crates/consensus/engine/src/task_queue/tasks/util.rs",
+                  "status": "removed"
+                },
+                {
+                  "additions": 4,
+                  "changes": 10,
+                  "deletions": 6,
+                  "filename": "crates/consensus/service/README.md",
+                  "status": "modified"
+                },
+                {
+                  "additions": 70,
+                  "changes": 167,
+                  "deletions": 97,
+                  "filename": "crates/consensus/service/src/actors/engine/engine_request_processor.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 45,
+                  "changes": 51,
+                  "deletions": 6,
+                  "filename": "crates/consensus/service/src/actors/engine/error.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/service/src/actors/engine/mod.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 9,
+                  "deletions": 8,
+                  "filename": "crates/consensus/service/src/actors/engine/rpc_request_processor.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 4,
+                  "changes": 7,
+                  "deletions": 3,
+                  "filename": "crates/consensus/service/src/actors/mod.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/service/src/follow/engine.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 15,
+                  "changes": 30,
+                  "deletions": 15,
+                  "filename": "crates/consensus/service/src/lib.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 4,
+                  "deletions": 3,
+                  "filename": "crates/consensus/service/src/service/node.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 148,
+                  "changes": 153,
+                  "deletions": 5,
+                  "filename": "crates/consensus/service/tests/actors/engine.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "refactor(consensus): delete engine task queue",
+                "fix(consensus): satisfy engine clippy bounds",
+                "Simplify consensus engine operations"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "43 changed files",
+                "3 commits"
+              ]
+            },
+            "created_at": "2026-05-05T18:12:27Z",
+            "current_status": "merged",
+            "deletions": 814,
+            "draft": false,
+            "labels": [
+              "consensus",
+              "stacked"
+            ],
+            "merged_at": "2026-05-26T14:45:43Z",
+            "number": 2538,
+            "review_time_hours": 500.55,
+            "state": "closed",
+            "title": "refactor(consensus): Delete Engine Task Queue",
+            "updated_at": "2026-05-26T14:45:47Z",
+            "user": "refcell"
+          },
+          {
+            "additions": 17,
+            "changed_files": 3,
+            "closed_at": "2026-05-26T14:53:09Z",
+            "content_signals": {
+              "body_excerpt": "## Summary\r\n\r\nThis schedules the Zeronet Beryl activation for June 1, 2026 at 1:00pm EDT. It updates the built-in chain config, keeps the embedded Zeronet genesis Base fork stanza aligned, and adjusts the focused activation assertions for the new timestamp.\r\n\r\nTimestamp verified with https://www.unixtimestamp.com/\r\n\r\n\r\n<img width=\"732\" height=\"447\" alt=\"Screenshot 2026-05-26 at 10 21 29\u202fAM\" src=\"https://github.com/user-attachments/assets/475aa2f5-1f6f-4710-ae42-a4bf1a947c1e\" />",
+              "changed_files": [
+                {
+                  "additions": 4,
+                  "changes": 5,
+                  "deletions": 1,
+                  "filename": "crates/common/chains/res/genesis/zeronet_base.json",
+                  "status": "modified"
+                },
+                {
+                  "additions": 6,
+                  "changes": 12,
+                  "deletions": 6,
+                  "filename": "crates/common/chains/src/chain.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 7,
+                  "changes": 8,
+                  "deletions": 1,
+                  "filename": "crates/common/chains/src/config.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "feat(chains): schedule zeronet beryl activation"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "3 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-26T14:11:13Z",
+            "current_status": "merged",
+            "deletions": 8,
+            "draft": false,
+            "labels": [
+              "feature"
+            ],
+            "merged_at": "2026-05-26T14:53:09Z",
+            "number": 2925,
+            "review_time_hours": 0.7,
+            "state": "closed",
+            "title": "feat(chains): Schedule Zeronet Beryl Activation",
+            "updated_at": "2026-05-26T14:53:11Z",
+            "user": "refcell"
+          },
+          {
+            "additions": 130,
+            "changed_files": 2,
+            "closed_at": "2026-05-26T16:00:26Z",
+            "content_signals": {
+              "body_excerpt": "## Summary\n\nAuto-generated PR to sync Cargo.toml version with release branch.\n\n- **Release branch**: `releases/v0.10.0`\n- **Target version**: `0.10.0`\n\nOnce merged, run the **Create Release** workflow to build a release candidate.",
+              "changed_files": [
+                {
+                  "additions": 129,
+                  "changes": 258,
+                  "deletions": 129,
+                  "filename": "Cargo.lock",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "Cargo.toml",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "chore(release): set version to 0.10.0"
+              ],
+              "modules": [
+                "root"
+              ],
+              "summary_basis": [
+                "PR body",
+                "2 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-26T15:50:04Z",
+            "current_status": "merged",
+            "deletions": 130,
+            "draft": false,
+            "labels": [],
+            "merged_at": "2026-05-26T16:00:26Z",
+            "number": 2928,
+            "review_time_hours": 0.17,
+            "state": "closed",
+            "title": "chore(release): set version to 0.10.0",
+            "updated_at": "2026-05-26T16:00:28Z",
+            "user": "github-actions[bot]"
+          }
+        ],
+        "open": [
+          {
+            "additions": 1134,
+            "changed_files": 8,
+            "closed_at": null,
+            "content_signals": {
+              "body_excerpt": "## Summary\n\nPR4 of the EIP-8130 (account abstraction) rollout. Flips the devp2p transaction-pool validator from PR3's hard-reject of type-byte 0x7D to a **conservative accept** path that runs every spec-mandated structural check while still keeping all execution-time semantics (verifier dispatch, state lookups, fork gating) deferred to later PRs.\n\nRPC ingress (ingress-rpc + execution-rpc) remains closed; local-origin submissions from devp2p are also rejected. Hardfork gating lands in PR6 against **Cobalt** (the upgrade after Beryl; `BaseUpgrade::Cobalt` doesn't exist in this repo yet and will be added by PR6).\n\n## What changed\n\n**Sender recovery (commit 1)** \u2014 fixes a hidden break in PR3: `BasePooledTransaction::SignerRecoverable` for the EIP-8130 variant was previously returning `tx.explicit_sender()` unconditionally, meaning EOA-path transactions (`sender = None`) could never be indexed in the pool. Adds `Eip8130Signed::recover_eoa_sender()` which:\n\n- returns `Ok(None)` for configured-owner txs (sender already explicit)\n- recovers from the 65-byte `sender_auth` against `sender_signature_hash()` for EOA txs\n- returns `Err` on malformed payloads\n\n**Mempool policy constants (comm...",
+              "changed_files": [
+                {
+                  "additions": 1,
+                  "changes": 1,
+                  "deletions": 0,
+                  "filename": "Cargo.lock",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 1,
+                  "deletions": 0,
+                  "filename": "crates/common/consensus/Cargo.toml",
+                  "status": "modified"
+                },
+                {
+                  "additions": 32,
+                  "changes": 33,
+                  "deletions": 1,
+                  "filename": "crates/common/consensus/src/transaction/eip8130/constants.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 161,
+                  "changes": 161,
+                  "deletions": 0,
+                  "filename": "crates/common/consensus/src/transaction/eip8130/signed.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 66,
+                  "changes": 77,
+                  "deletions": 11,
+                  "filename": "crates/common/consensus/src/transaction/envelope.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 3,
+                  "changes": 8,
+                  "deletions": 5,
+                  "filename": "crates/common/consensus/src/transaction/pooled.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 18,
+                  "changes": 23,
+                  "deletions": 5,
+                  "filename": "crates/execution/txpool/src/transaction.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 852,
+                  "changes": 865,
+                  "deletions": 13,
+                  "filename": "crates/execution/txpool/src/validator.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "feat(consensus): recover EOA sender for EIP-8130 pool indexing",
+                "feat(consensus): add EIP-8130 mempool policy constants",
+                "feat(txpool): accept EIP-8130 with structural validation",
+                "test(txpool): EIP-8130 structural validation",
+                "fix(txpool): EIP-8130 already-expired and ConfigChange owner_changes",
+                "fix(consensus): honor unchecked EIP-8130 sender recovery contract",
+                "fix(consensus): EIP-8130 envelope honors EOA recovery + checked/unchecked split",
+                "fix(txpool): EIP-8130 cap owner entries + revoke-check on config auth",
+                "fix(txpool,consensus): EIP-8130 unify auth verifier range + dedupe recovery"
+              ],
+              "modules": [
+                "crates",
+                "root"
+              ],
+              "summary_basis": [
+                "PR body",
+                "8 changed files",
+                "9 commits"
+              ]
+            },
+            "created_at": "2026-05-26T15:39:16Z",
+            "current_status": "open",
+            "deletions": 35,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2926,
+            "review_time_hours": null,
+            "state": "open",
+            "title": "feat(txpool): EIP-8130 conservative-accept gate (PR4 of N)",
+            "updated_at": "2026-05-26T17:32:11Z",
+            "user": "haardikk21"
+          },
+          {
+            "additions": 1,
+            "changed_files": 1,
+            "closed_at": null,
+            "content_signals": {
+              "body_excerpt": "## Summary\n\nRefreshes `crates/proof/succinct/elf/manifest.toml` from a fresh SP1 ELF build after a merge to trunk (`main`).\n\nGenerated by https://github.com/base/base/actions/runs/26483962587.\n\n## Validation\n\n- `just succinct build-elfs`\n- `just succinct write-manifest`\n- `python3 etc/scripts/local/check-elf-manifest.py --print-hashes crates/proof/succinct/elf/manifest.toml crates/proof/succinct/elf`\n\n## Hashes\n\n```text\nrange-elf-embedded: expected=\"45cb78e7f82403dd10e67301e22e3e128ec8df511b7d6a22a3eb33b464afd0a7\" actual=\"45cb78e7f82403dd10e67301e22e3e128ec8df511b7d6a22a3eb33b464afd0a7\"\naggregation-elf: expected=\"baf0a889a5c493d780235b14f21e4f6c94feb8d4d8e138224f0d7d8572c944b9\" actual=\"baf0a889a5c493d780235b14f21e4f6c94feb8d4d8e138224f0d7d8572c944b9\"\n```\n\n## Diff\n\n```diff\ndiff --git a/crates/proof/succinct/elf/manifest.toml b/crates/proof/succinct/elf/manifest.toml\nindex 88a50a0..adc9af2 100644\n--- a/crates/proof/succinct/elf/manifest.toml\n+++ b/crates/proof/succinct/elf/manifest.toml\n@@ -17,7 +17,7 @@\n \n [[elfs]]\n name = \"range-elf-embedded\"\n-sha256 = \"fc20d749763f788b9c54cac58399d09eae1396d3e187cc0c22240b941f4ad0ed\"\n+sha256 = \"45cb78e7f82403dd10e67301e22e3e128ec8df511b7d6a22a3...",
+              "changed_files": [
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/proof/succinct/elf/manifest.toml",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix(proof): refresh succinct elf manifest"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "1 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-26T15:49:55Z",
+            "current_status": "open",
+            "deletions": 1,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2927,
+            "review_time_hours": null,
+            "state": "open",
+            "title": "fix(proof): refresh succinct elf manifest",
+            "updated_at": "2026-05-27T00:57:21Z",
+            "user": "github-actions[bot]"
+          }
+        ]
+      },
+      "prs": {
+        "closed_unmerged": [
+          {
+            "additions": 39,
+            "changed_files": 4,
+            "closed_at": "2026-05-26T07:35:00Z",
+            "content_signals": {
+              "body_excerpt": "This commit resolves three high-value items identified during a repository audit:\r\n\r\n1. Websocket Proxy Filter Refactor: Replaced brittle `unwrap()` pattern during string parsing in `crates/infra/websocket-proxy/src/filter.rs` with safe `let Ok(value)` destructuring to improve stability and avoid potential panics.\r\n\r\n2. S3 Audit Log Event Support: Extended `archive_event` in `crates/infra/audit/src/storage.rs` to support handling all `BundleEvent` variants instead of explicitly returning an error. Fallback uses either the bundle hash (if present) or the bundle ID.\r\n\r\n3. S3 Audit Log Exponential Backoff: Implemented exponential backoff using the `backon` crate to retry `put_object` requests when uploading events to S3. This resolves a known issue (TODO) where transient network failures would drop audit logs.",
+              "changed_files": [
+                {
+                  "additions": 1,
+                  "changes": 1,
+                  "deletions": 0,
+                  "filename": "Cargo.lock",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 1,
+                  "deletions": 0,
+                  "filename": "crates/infra/audit/Cargo.toml",
+                  "status": "modified"
+                },
+                {
+                  "additions": 34,
+                  "changes": 52,
+                  "deletions": 18,
+                  "filename": "crates/infra/audit/src/storage.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 3,
+                  "changes": 8,
+                  "deletions": 5,
+                  "filename": "crates/infra/websocket-proxy/src/filter.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix: improve reliability of websocket proxy and s3 audit logs"
+              ],
+              "modules": [
+                "crates",
+                "root"
+              ],
+              "summary_basis": [
+                "PR body",
+                "4 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-26T07:34:39Z",
+            "current_status": "closed_unmerged",
+            "deletions": 23,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2921,
+            "review_time_hours": null,
+            "state": "closed",
+            "title": "fix: improve reliability of websocket proxy and s3 audit logs",
+            "updated_at": "2026-05-26T07:35:00Z",
+            "user": "sethoshi18"
+          },
+          {
+            "additions": 38,
+            "changed_files": 1,
+            "closed_at": "2026-05-25T22:56:34Z",
+            "content_signals": {
+              "body_excerpt": "## Summary\n\n`decode_eip_1559_params()` returns `(elasticity, denominator)` (documented in `HoloceneExtraData::decode_params`). The pattern:\n\n```rust\nSome((0, e)) if e != 0 => {\n    error!(\"Holocene EIP1559 params cannot have a 0 denominator unless elasticity is also 0...\");\n```\n\nfires when **elasticity = 0** and denominator \u2260 0, but the error message says **\"0 denominator\"** \u2014 the two fields are swapped.\n\n## Root cause\n\nThe tuple returned by `decode_eip_1559_params()` is `(elasticity_multiplier, max_change_denominator)`. The destructuring variable names `ae` / `ad` (`a`ttribute `e`lasticity / `a`ttribute `d`enominator) confirm the intent, but the prose in the error message accidentally describes the opposite field.\n\n## Changes\n\n1. **Fix the error message** for the zero-elasticity arm: `\"0 denominator\"` \u2192 `\"0 elasticity multiplier\"`.\n2. **Add the missing guard** for the symmetric case `Some((ae, 0)) if ae != 0` \u2014 non-zero elasticity with a zero denominator was silently accepted and would cause a division-by-zero in downstream base fee calculations.\n3. **Update `AttributesMismatch::InvalidEIP1559ParamsCombination`** doc comment to cover both invalid cases.\n4. **Fix the misleading ...",
+              "changed_files": [
+                {
+                  "additions": 38,
+                  "changes": 40,
+                  "deletions": 2,
+                  "filename": "crates/consensus/engine/src/attributes.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix(engine): correct swapped EIP-1559 error message and add missing zero-denominator check"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "1 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-25T22:56:12Z",
+            "current_status": "closed_unmerged",
+            "deletions": 2,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2920,
+            "review_time_hours": null,
+            "state": "closed",
+            "title": "fix(engine): correct swapped EIP-1559 error message and add missing zero-denominator guard",
+            "updated_at": "2026-05-25T22:56:34Z",
+            "user": "Alicepoltora"
+          },
+          {
+            "additions": 1,
+            "changed_files": 1,
+            "closed_at": "2026-05-25T22:45:00Z",
+            "content_signals": {
+              "body_excerpt": "## Bug\n\nIn `find_starting_forkchoice()`, the safe block search cursor was initialized with `current_fc.un_safe` (the unsafe/unconfirmed head) instead of `current_fc.safe` (the known-safe head).\n\n```rust\n// Before (buggy)\nlet mut safe_cursor = current_fc.un_safe;\n\n// After (fixed)\nlet mut safe_cursor = current_fc.safe;\n```\n\n## Impact\n\nOn every node restart, the algorithm unnecessarily traverses every block between the unsafe head and the actual safe head before finding the correct safe block. In practice, the unsafe head can be hundreds or thousands of blocks ahead of the safe head (the sequencing window on Base mainnet is 3600 L1 blocks), making sync start significantly slower than it needs to be.\n\n## Why the fix is safe\n\nThe loop already handles the general case correctly: it checks `is_behind_sequence_window || is_finalized || is_genesis` and walks backwards if needed. Starting from `current_fc.safe` means:\n- If the existing safe block already satisfies the sequencing window condition (the common case), the loop exits immediately.\n- If for some reason the safe block needs to be pushed further back, the loop continues walking backwards exactly as before.\n\nCorrectness is unchang...",
+              "changed_files": [
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/sync/mod.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix(sync): initialize safe_cursor from safe FC instead of unsafe"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "1 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-25T22:44:40Z",
+            "current_status": "closed_unmerged",
+            "deletions": 1,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2919,
+            "review_time_hours": null,
+            "state": "closed",
+            "title": "fix(sync): initialize safe_cursor from safe FC instead of unsafe",
+            "updated_at": "2026-05-25T22:45:00Z",
+            "user": "Alicepoltora"
+          },
+          {
+            "additions": 3,
+            "changed_files": 1,
+            "closed_at": "2026-05-25T19:42:16Z",
+            "content_signals": {
+              "body_excerpt": "## Summary\r\n\r\nFixes a panic in `StateProcessor::build_pending_state` when called with empty flashblock input.\r\n\r\nThe previous code called `.unwrap()` on the minimum key of an empty `BTreeMap`, which could panic. This now returns `Ok(None)` when there is no pending state to build.\r\n\r\nFixes #2785\r\n\r\n## Testing\r\n\r\n- `cargo +nightly fmt`\r\n\r\nI attempted `cargo check -p base-flashblocks` locally on Windows, but the build is blocked by a native `librocksdb-sys`/MSVC toolchain error unrelated to this change.",
+              "changed_files": [
+                {
+                  "additions": 3,
+                  "changes": 4,
+                  "deletions": 1,
+                  "filename": "crates/execution/flashblocks/src/processor.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix(flashblocks): handle empty pending state input"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "1 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-25T19:41:57Z",
+            "current_status": "closed_unmerged",
+            "deletions": 1,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2917,
+            "review_time_hours": null,
+            "state": "closed",
+            "title": "fix(flashblocks): handle empty pending state input",
+            "updated_at": "2026-05-25T19:42:16Z",
+            "user": "Danielkis97"
+          }
+        ],
+        "merged": [
+          {
+            "additions": 2538,
+            "changed_files": 14,
+            "closed_at": "2026-05-26T15:43:24Z",
+            "content_signals": {
+              "body_excerpt": "co-authored with claude\r\n\r\nOverview:\r\n- Introduces `bin/snappy` and `infra/snappy`. The bin will be ran as a sidecar against `base-node-reth` and `base-consensus` and will pause the `base-node-reth` container, run `Reth::SnapshotManifestCommand` to produce a manifest.json and all the tar files, and unpause `base-node-reth`\r\n- Utilizes the `bollard` package to manage the pause/unpause state of docker containers\r\n- Utilizes the S3 SDK as R2/MinIO are all S3-API compatible \r\n\r\nTests:\r\n- Wrote integration tests (pause, unpause, uploading to MinIO)\r\n- Wrote an e2e test (pause -> upload -> unpause)\r\n\r\nUp next:\r\n- [ ] Wiring up the `reth download` command to `crates/execution`\r\n- [ ] Optimizations to upload only diffs. That is, not uploading committed static files anymore",
+              "changed_files": [
+                {
+                  "additions": 43,
+                  "changes": 45,
+                  "deletions": 2,
+                  "filename": "Cargo.lock",
+                  "status": "modified"
+                },
+                {
+                  "additions": 8,
+                  "changes": 8,
+                  "deletions": 0,
+                  "filename": "Cargo.toml",
+                  "status": "modified"
+                },
+                {
+                  "additions": 27,
+                  "changes": 27,
+                  "deletions": 0,
+                  "filename": "bin/snapshotter/Cargo.toml",
+                  "status": "added"
+                },
+                {
+                  "additions": 69,
+                  "changes": 69,
+                  "deletions": 0,
+                  "filename": "bin/snapshotter/main.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 38,
+                  "changes": 38,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/Cargo.toml",
+                  "status": "added"
+                },
+                {
+                  "additions": 37,
+                  "changes": 37,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/README.md",
+                  "status": "added"
+                },
+                {
+                  "additions": 86,
+                  "changes": 86,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/src/config.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 108,
+                  "changes": 108,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/src/container.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 23,
+                  "changes": 23,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/src/lib.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 146,
+                  "changes": 146,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/src/orchestrator.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 794,
+                  "changes": 794,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/src/snapshot.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 454,
+                  "changes": 454,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/src/upload.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 42,
+                  "changes": 42,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/tests/common/mod.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 663,
+                  "changes": 663,
+                  "deletions": 0,
+                  "filename": "crates/infra/snapshotter/tests/e2e_test.rs",
+                  "status": "added"
+                }
+              ],
+              "commit_subjects": [
+                "spike",
+                "use SnapshotCommand wiring + similar manifest structure + add e2e",
+                "rename + err handling + parallelize + creds + nits + multi-part upload",
+                "perf: snapshotter to only upload diffs for static files (#2583)",
+                "perf: skip compression on finalized static files (#2700)",
+                "feedback"
+              ],
+              "modules": [
+                "bin",
+                "crates",
+                "root"
+              ],
+              "summary_basis": [
+                "PR body",
+                "14 changed files",
+                "6 commits"
+              ]
+            },
+            "created_at": "2026-05-06T16:02:48Z",
+            "current_status": "merged",
+            "deletions": 2,
+            "draft": false,
+            "labels": [
+              "active"
+            ],
+            "merged_at": "2026-05-26T15:43:24Z",
+            "number": 2550,
+            "review_time_hours": 479.68,
+            "state": "closed",
+            "title": "feat: introduce `snapshotter`",
+            "updated_at": "2026-05-26T17:23:56Z",
+            "user": "wlawt"
+          },
+          {
+            "additions": 17,
+            "changed_files": 3,
+            "closed_at": "2026-05-26T14:53:09Z",
+            "content_signals": {
+              "body_excerpt": "## Summary\r\n\r\nThis schedules the Zeronet Beryl activation for June 1, 2026 at 1:00pm EDT. It updates the built-in chain config, keeps the embedded Zeronet genesis Base fork stanza aligned, and adjusts the focused activation assertions for the new timestamp.\r\n\r\nTimestamp verified with https://www.unixtimestamp.com/\r\n\r\n\r\n<img width=\"732\" height=\"447\" alt=\"Screenshot 2026-05-26 at 10 21 29\u202fAM\" src=\"https://github.com/user-attachments/assets/475aa2f5-1f6f-4710-ae42-a4bf1a947c1e\" />",
+              "changed_files": [
+                {
+                  "additions": 4,
+                  "changes": 5,
+                  "deletions": 1,
+                  "filename": "crates/common/chains/res/genesis/zeronet_base.json",
+                  "status": "modified"
+                },
+                {
+                  "additions": 6,
+                  "changes": 12,
+                  "deletions": 6,
+                  "filename": "crates/common/chains/src/chain.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 7,
+                  "changes": 8,
+                  "deletions": 1,
+                  "filename": "crates/common/chains/src/config.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "feat(chains): schedule zeronet beryl activation"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "3 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-26T14:11:13Z",
+            "current_status": "merged",
+            "deletions": 8,
+            "draft": false,
+            "labels": [
+              "feature"
+            ],
+            "merged_at": "2026-05-26T14:53:09Z",
+            "number": 2925,
+            "review_time_hours": 0.7,
+            "state": "closed",
+            "title": "feat(chains): Schedule Zeronet Beryl Activation",
+            "updated_at": "2026-05-26T14:53:11Z",
+            "user": "refcell"
+          },
+          {
+            "additions": 623,
+            "changed_files": 43,
+            "closed_at": "2026-05-26T14:45:43Z",
+            "content_signals": {
+              "body_excerpt": "## Summary\n\nDelete the remaining engine priority queue, task enum, trait dispatch, enqueue, drain, and delegated/finalize wrapper structs. The engine processor now publishes direct-operation state changes without a pre-drain step, and Engine is a non-generic state owner with generic methods for the client-specific calls. The legacy dev queue-length RPC now reports zero without carrying queue state through the engine actor.",
+              "changed_files": [
+                {
+                  "additions": 3,
+                  "changes": 6,
+                  "deletions": 3,
+                  "filename": "crates/consensus/engine/README.md",
+                  "status": "modified"
+                },
+                {
+                  "additions": 4,
+                  "changes": 9,
+                  "deletions": 5,
+                  "filename": "crates/consensus/engine/src/lib.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 6,
+                  "changes": 21,
+                  "deletions": 15,
+                  "filename": "crates/consensus/engine/src/metrics/mod.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 234,
+                  "changes": 397,
+                  "deletions": 163,
+                  "filename": "crates/consensus/engine/src/operations/core.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/operations/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 6,
+                  "changes": 15,
+                  "deletions": 9,
+                  "filename": "crates/consensus/engine/src/operations/tasks/build/error.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 0,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/build/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 12,
+                  "deletions": 11,
+                  "filename": "crates/consensus/engine/src/operations/tasks/consolidate/error.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 0,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/consolidate/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 0,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/consolidate/task.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 5,
+                  "changes": 10,
+                  "deletions": 5,
+                  "filename": "crates/consensus/engine/src/operations/tasks/consolidate/task_test.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/operations/tasks/delegated_forkchoice/direct_test.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 5,
+                  "deletions": 4,
+                  "filename": "crates/consensus/engine/src/operations/tasks/delegated_forkchoice/error.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 7,
+                  "changes": 8,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/operations/tasks/delegated_forkchoice/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 0,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/finalize/direct_test.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 4,
+                  "deletions": 3,
+                  "filename": "crates/consensus/engine/src/operations/tasks/finalize/error.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/operations/tasks/finalize/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 4,
+                  "deletions": 3,
+                  "filename": "crates/consensus/engine/src/operations/tasks/insert/error.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 0,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/insert/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 4,
+                  "changes": 11,
+                  "deletions": 7,
+                  "filename": "crates/consensus/engine/src/operations/tasks/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 3,
+                  "changes": 9,
+                  "deletions": 6,
+                  "filename": "crates/consensus/engine/src/operations/tasks/seal/error.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 4,
+                  "changes": 4,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/seal/mod.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 36,
+                  "changes": 36,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/severity.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/operations/tasks/synchronize/error.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 0,
+                  "deletions": 0,
+                  "filename": "crates/consensus/engine/src/operations/tasks/synchronize/mod.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 3,
+                  "changes": 15,
+                  "deletions": 12,
+                  "filename": "crates/consensus/engine/src/operations/tasks/synchronize/task.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/operations/tasks/synchronize/task_test.rs",
+                  "status": "renamed"
+                },
+                {
+                  "additions": 9,
+                  "changes": 17,
+                  "deletions": 8,
+                  "filename": "crates/consensus/engine/src/query.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 0,
+                  "changes": 10,
+                  "deletions": 10,
+                  "filename": "crates/consensus/engine/src/task_queue/tasks/delegated_forkchoice/mod.rs",
+                  "status": "removed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 7,
+                  "deletions": 7,
+                  "filename": "crates/consensus/engine/src/task_queue/tasks/seal/mod.rs",
+                  "status": "removed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 235,
+                  "deletions": 235,
+                  "filename": "crates/consensus/engine/src/task_queue/tasks/seal/task.rs",
+                  "status": "removed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 100,
+                  "deletions": 100,
+                  "filename": "crates/consensus/engine/src/task_queue/tasks/task.rs",
+                  "status": "removed"
+                },
+                {
+                  "additions": 0,
+                  "changes": 57,
+                  "deletions": 57,
+                  "filename": "crates/consensus/engine/src/task_queue/tasks/util.rs",
+                  "status": "removed"
+                },
+                {
+                  "additions": 4,
+                  "changes": 10,
+                  "deletions": 6,
+                  "filename": "crates/consensus/service/README.md",
+                  "status": "modified"
+                },
+                {
+                  "additions": 70,
+                  "changes": 167,
+                  "deletions": 97,
+                  "filename": "crates/consensus/service/src/actors/engine/engine_request_processor.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 45,
+                  "changes": 51,
+                  "deletions": 6,
+                  "filename": "crates/consensus/service/src/actors/engine/error.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/service/src/actors/engine/mod.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 9,
+                  "deletions": 8,
+                  "filename": "crates/consensus/service/src/actors/engine/rpc_request_processor.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 4,
+                  "changes": 7,
+                  "deletions": 3,
+                  "filename": "crates/consensus/service/src/actors/mod.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/service/src/follow/engine.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 15,
+                  "changes": 30,
+                  "deletions": 15,
+                  "filename": "crates/consensus/service/src/lib.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 4,
+                  "deletions": 3,
+                  "filename": "crates/consensus/service/src/service/node.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 148,
+                  "changes": 153,
+                  "deletions": 5,
+                  "filename": "crates/consensus/service/tests/actors/engine.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "refactor(consensus): delete engine task queue",
+                "fix(consensus): satisfy engine clippy bounds",
+                "Simplify consensus engine operations"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "43 changed files",
+                "3 commits"
+              ]
+            },
+            "created_at": "2026-05-05T18:12:27Z",
+            "current_status": "merged",
+            "deletions": 814,
+            "draft": false,
+            "labels": [
+              "consensus",
+              "stacked"
+            ],
+            "merged_at": "2026-05-26T14:45:43Z",
+            "number": 2538,
+            "review_time_hours": 500.55,
+            "state": "closed",
+            "title": "refactor(consensus): Delete Engine Task Queue",
+            "updated_at": "2026-05-26T14:45:47Z",
+            "user": "refcell"
+          }
+        ],
+        "opened": [
+          {
+            "additions": 1,
+            "changed_files": 1,
+            "closed_at": null,
+            "content_signals": {
+              "body_excerpt": "## Summary\n\nRefreshes `crates/proof/succinct/elf/manifest.toml` from a fresh SP1 ELF build after a merge to trunk (`main`).\n\nGenerated by https://github.com/base/base/actions/runs/26483962587.\n\n## Validation\n\n- `just succinct build-elfs`\n- `just succinct write-manifest`\n- `python3 etc/scripts/local/check-elf-manifest.py --print-hashes crates/proof/succinct/elf/manifest.toml crates/proof/succinct/elf`\n\n## Hashes\n\n```text\nrange-elf-embedded: expected=\"45cb78e7f82403dd10e67301e22e3e128ec8df511b7d6a22a3eb33b464afd0a7\" actual=\"45cb78e7f82403dd10e67301e22e3e128ec8df511b7d6a22a3eb33b464afd0a7\"\naggregation-elf: expected=\"baf0a889a5c493d780235b14f21e4f6c94feb8d4d8e138224f0d7d8572c944b9\" actual=\"baf0a889a5c493d780235b14f21e4f6c94feb8d4d8e138224f0d7d8572c944b9\"\n```\n\n## Diff\n\n```diff\ndiff --git a/crates/proof/succinct/elf/manifest.toml b/crates/proof/succinct/elf/manifest.toml\nindex 88a50a0..adc9af2 100644\n--- a/crates/proof/succinct/elf/manifest.toml\n+++ b/crates/proof/succinct/elf/manifest.toml\n@@ -17,7 +17,7 @@\n \n [[elfs]]\n name = \"range-elf-embedded\"\n-sha256 = \"fc20d749763f788b9c54cac58399d09eae1396d3e187cc0c22240b941f4ad0ed\"\n+sha256 = \"45cb78e7f82403dd10e67301e22e3e128ec8df511b7d6a22a3...",
+              "changed_files": [
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/proof/succinct/elf/manifest.toml",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix(proof): refresh succinct elf manifest"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "1 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-26T15:49:55Z",
+            "current_status": "open",
+            "deletions": 1,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2927,
+            "review_time_hours": null,
+            "state": "open",
+            "title": "fix(proof): refresh succinct elf manifest",
+            "updated_at": "2026-05-27T00:57:21Z",
+            "user": "github-actions[bot]"
+          },
+          {
+            "additions": 2521,
+            "changed_files": 12,
+            "closed_at": null,
+            "content_signals": {
+              "body_excerpt": "Adds V2 proof storage tables, history-aware cursors, and current-state persistence so proof reads can reconstruct historical state from old-value changesets. The MDBX backend now seeds initial state into V2 current tables and keeps V2 history in sync across writes, prune, unwind, and replacement flows.",
+              "changed_files": [
+                {
+                  "additions": 11,
+                  "changes": 41,
+                  "deletions": 30,
+                  "filename": "crates/execution/trie/src/db/batch.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 499,
+                  "changes": 503,
+                  "deletions": 4,
+                  "filename": "crates/execution/trie/src/db/cursor.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 2,
+                  "changes": 3,
+                  "deletions": 1,
+                  "filename": "crates/execution/trie/src/db/mod.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 220,
+                  "changes": 220,
+                  "deletions": 0,
+                  "filename": "crates/execution/trie/src/db/models/key.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 92,
+                  "changes": 96,
+                  "deletions": 4,
+                  "filename": "crates/execution/trie/src/db/models/mod.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 3,
+                  "changes": 3,
+                  "deletions": 0,
+                  "filename": "crates/execution/trie/src/db/models/storage.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 104,
+                  "changes": 104,
+                  "deletions": 0,
+                  "filename": "crates/execution/trie/src/db/models/value.rs",
+                  "status": "added"
+                },
+                {
+                  "additions": 1520,
+                  "changes": 4520,
+                  "deletions": 3000,
+                  "filename": "crates/execution/trie/src/db/store.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 6,
+                  "changes": 6,
+                  "deletions": 0,
+                  "filename": "crates/execution/trie/src/error.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 2,
+                  "changes": 5,
+                  "deletions": 3,
+                  "filename": "crates/execution/trie/src/provider.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 30,
+                  "changes": 39,
+                  "deletions": 9,
+                  "filename": "crates/execution/trie/src/prune/pruner.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 32,
+                  "changes": 42,
+                  "deletions": 10,
+                  "filename": "crates/execution/trie/tests/live.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "feat(proofs): add v2 proof storage schema",
+                "feat(proofs): add v2 proof storage cursors",
+                "feat(proofs): persist v2 proof storage state",
+                "feat(proofs): make v2 proof state authoritative",
+                "feat(proofs): use v2 cursors for proof batches",
+                "fix(proofs): satisfy v2 cursor clippy",
+                "fix(proofs): clean proof provider test clippy",
+                "fix(proofs): clean live proof test clippy",
+                "fix(proofs): support metrics storage test helpers",
+                "fix(proofs): harden v2 key decoding",
+                "fix(proofs): repair v2 trie cursor misses",
+                "fix(proofs): clean v2 clippy warnings",
+                "fix(proofs): address v2 cursor review notes",
+                "fix(proofs): remove stale cursor imports",
+                "fix(proofs): address v2 review edge cases",
+                "fix(proofs): clarify v2 cursor history semantics",
+                "fix(proofs): borrow v2 trie subkey conversion"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "12 changed files",
+                "17 commits"
+              ]
+            },
+            "created_at": "2026-05-25T21:11:03Z",
+            "current_status": "draft",
+            "deletions": 3061,
+            "draft": true,
+            "labels": [],
+            "merged_at": null,
+            "number": 2918,
+            "review_time_hours": null,
+            "state": "open",
+            "title": "feat(proofs): add V2 proof storage",
+            "updated_at": "2026-05-26T23:00:28Z",
+            "user": "0x00101010"
+          },
+          {
+            "additions": 1134,
+            "changed_files": 8,
+            "closed_at": null,
+            "content_signals": {
+              "body_excerpt": "## Summary\n\nPR4 of the EIP-8130 (account abstraction) rollout. Flips the devp2p transaction-pool validator from PR3's hard-reject of type-byte 0x7D to a **conservative accept** path that runs every spec-mandated structural check while still keeping all execution-time semantics (verifier dispatch, state lookups, fork gating) deferred to later PRs.\n\nRPC ingress (ingress-rpc + execution-rpc) remains closed; local-origin submissions from devp2p are also rejected. Hardfork gating lands in PR6 against **Cobalt** (the upgrade after Beryl; `BaseUpgrade::Cobalt` doesn't exist in this repo yet and will be added by PR6).\n\n## What changed\n\n**Sender recovery (commit 1)** \u2014 fixes a hidden break in PR3: `BasePooledTransaction::SignerRecoverable` for the EIP-8130 variant was previously returning `tx.explicit_sender()` unconditionally, meaning EOA-path transactions (`sender = None`) could never be indexed in the pool. Adds `Eip8130Signed::recover_eoa_sender()` which:\n\n- returns `Ok(None)` for configured-owner txs (sender already explicit)\n- recovers from the 65-byte `sender_auth` against `sender_signature_hash()` for EOA txs\n- returns `Err` on malformed payloads\n\n**Mempool policy constants (comm...",
+              "changed_files": [
+                {
+                  "additions": 1,
+                  "changes": 1,
+                  "deletions": 0,
+                  "filename": "Cargo.lock",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 1,
+                  "deletions": 0,
+                  "filename": "crates/common/consensus/Cargo.toml",
+                  "status": "modified"
+                },
+                {
+                  "additions": 32,
+                  "changes": 33,
+                  "deletions": 1,
+                  "filename": "crates/common/consensus/src/transaction/eip8130/constants.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 161,
+                  "changes": 161,
+                  "deletions": 0,
+                  "filename": "crates/common/consensus/src/transaction/eip8130/signed.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 66,
+                  "changes": 77,
+                  "deletions": 11,
+                  "filename": "crates/common/consensus/src/transaction/envelope.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 3,
+                  "changes": 8,
+                  "deletions": 5,
+                  "filename": "crates/common/consensus/src/transaction/pooled.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 18,
+                  "changes": 23,
+                  "deletions": 5,
+                  "filename": "crates/execution/txpool/src/transaction.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 852,
+                  "changes": 865,
+                  "deletions": 13,
+                  "filename": "crates/execution/txpool/src/validator.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "feat(consensus): recover EOA sender for EIP-8130 pool indexing",
+                "feat(consensus): add EIP-8130 mempool policy constants",
+                "feat(txpool): accept EIP-8130 with structural validation",
+                "test(txpool): EIP-8130 structural validation",
+                "fix(txpool): EIP-8130 already-expired and ConfigChange owner_changes",
+                "fix(consensus): honor unchecked EIP-8130 sender recovery contract",
+                "fix(consensus): EIP-8130 envelope honors EOA recovery + checked/unchecked split",
+                "fix(txpool): EIP-8130 cap owner entries + revoke-check on config auth",
+                "fix(txpool,consensus): EIP-8130 unify auth verifier range + dedupe recovery"
+              ],
+              "modules": [
+                "crates",
+                "root"
+              ],
+              "summary_basis": [
+                "PR body",
+                "8 changed files",
+                "9 commits"
+              ]
+            },
+            "created_at": "2026-05-26T15:39:16Z",
+            "current_status": "open",
+            "deletions": 35,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2926,
+            "review_time_hours": null,
+            "state": "open",
+            "title": "feat(txpool): EIP-8130 conservative-accept gate (PR4 of N)",
+            "updated_at": "2026-05-26T17:32:11Z",
+            "user": "haardikk21"
+          },
+          {
+            "additions": 130,
+            "changed_files": 2,
+            "closed_at": "2026-05-26T16:00:26Z",
+            "content_signals": {
+              "body_excerpt": "## Summary\n\nAuto-generated PR to sync Cargo.toml version with release branch.\n\n- **Release branch**: `releases/v0.10.0`\n- **Target version**: `0.10.0`\n\nOnce merged, run the **Create Release** workflow to build a release candidate.",
+              "changed_files": [
+                {
+                  "additions": 129,
+                  "changes": 258,
+                  "deletions": 129,
+                  "filename": "Cargo.lock",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "Cargo.toml",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "chore(release): set version to 0.10.0"
+              ],
+              "modules": [
+                "root"
+              ],
+              "summary_basis": [
+                "PR body",
+                "2 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-26T15:50:04Z",
+            "current_status": "merged",
+            "deletions": 130,
+            "draft": false,
+            "labels": [],
+            "merged_at": "2026-05-26T16:00:26Z",
+            "number": 2928,
+            "review_time_hours": 0.17,
+            "state": "closed",
+            "title": "chore(release): set version to 0.10.0",
+            "updated_at": "2026-05-26T16:00:28Z",
+            "user": "github-actions[bot]"
+          },
+          {
+            "additions": 17,
+            "changed_files": 3,
+            "closed_at": "2026-05-26T14:53:09Z",
+            "content_signals": {
+              "body_excerpt": "## Summary\r\n\r\nThis schedules the Zeronet Beryl activation for June 1, 2026 at 1:00pm EDT. It updates the built-in chain config, keeps the embedded Zeronet genesis Base fork stanza aligned, and adjusts the focused activation assertions for the new timestamp.\r\n\r\nTimestamp verified with https://www.unixtimestamp.com/\r\n\r\n\r\n<img width=\"732\" height=\"447\" alt=\"Screenshot 2026-05-26 at 10 21 29\u202fAM\" src=\"https://github.com/user-attachments/assets/475aa2f5-1f6f-4710-ae42-a4bf1a947c1e\" />",
+              "changed_files": [
+                {
+                  "additions": 4,
+                  "changes": 5,
+                  "deletions": 1,
+                  "filename": "crates/common/chains/res/genesis/zeronet_base.json",
+                  "status": "modified"
+                },
+                {
+                  "additions": 6,
+                  "changes": 12,
+                  "deletions": 6,
+                  "filename": "crates/common/chains/src/chain.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 7,
+                  "changes": 8,
+                  "deletions": 1,
+                  "filename": "crates/common/chains/src/config.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "feat(chains): schedule zeronet beryl activation"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "3 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-26T14:11:13Z",
+            "current_status": "merged",
+            "deletions": 8,
+            "draft": false,
+            "labels": [
+              "feature"
+            ],
+            "merged_at": "2026-05-26T14:53:09Z",
+            "number": 2925,
+            "review_time_hours": 0.7,
+            "state": "closed",
+            "title": "feat(chains): Schedule Zeronet Beryl Activation",
+            "updated_at": "2026-05-26T14:53:11Z",
+            "user": "refcell"
+          },
+          {
+            "additions": 39,
+            "changed_files": 4,
+            "closed_at": "2026-05-26T07:35:00Z",
+            "content_signals": {
+              "body_excerpt": "This commit resolves three high-value items identified during a repository audit:\r\n\r\n1. Websocket Proxy Filter Refactor: Replaced brittle `unwrap()` pattern during string parsing in `crates/infra/websocket-proxy/src/filter.rs` with safe `let Ok(value)` destructuring to improve stability and avoid potential panics.\r\n\r\n2. S3 Audit Log Event Support: Extended `archive_event` in `crates/infra/audit/src/storage.rs` to support handling all `BundleEvent` variants instead of explicitly returning an error. Fallback uses either the bundle hash (if present) or the bundle ID.\r\n\r\n3. S3 Audit Log Exponential Backoff: Implemented exponential backoff using the `backon` crate to retry `put_object` requests when uploading events to S3. This resolves a known issue (TODO) where transient network failures would drop audit logs.",
+              "changed_files": [
+                {
+                  "additions": 1,
+                  "changes": 1,
+                  "deletions": 0,
+                  "filename": "Cargo.lock",
+                  "status": "modified"
+                },
+                {
+                  "additions": 1,
+                  "changes": 1,
+                  "deletions": 0,
+                  "filename": "crates/infra/audit/Cargo.toml",
+                  "status": "modified"
+                },
+                {
+                  "additions": 34,
+                  "changes": 52,
+                  "deletions": 18,
+                  "filename": "crates/infra/audit/src/storage.rs",
+                  "status": "modified"
+                },
+                {
+                  "additions": 3,
+                  "changes": 8,
+                  "deletions": 5,
+                  "filename": "crates/infra/websocket-proxy/src/filter.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix: improve reliability of websocket proxy and s3 audit logs"
+              ],
+              "modules": [
+                "crates",
+                "root"
+              ],
+              "summary_basis": [
+                "PR body",
+                "4 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-26T07:34:39Z",
+            "current_status": "closed_unmerged",
+            "deletions": 23,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2921,
+            "review_time_hours": null,
+            "state": "closed",
+            "title": "fix: improve reliability of websocket proxy and s3 audit logs",
+            "updated_at": "2026-05-26T07:35:00Z",
+            "user": "sethoshi18"
+          },
+          {
+            "additions": 38,
+            "changed_files": 1,
+            "closed_at": "2026-05-25T22:56:34Z",
+            "content_signals": {
+              "body_excerpt": "## Summary\n\n`decode_eip_1559_params()` returns `(elasticity, denominator)` (documented in `HoloceneExtraData::decode_params`). The pattern:\n\n```rust\nSome((0, e)) if e != 0 => {\n    error!(\"Holocene EIP1559 params cannot have a 0 denominator unless elasticity is also 0...\");\n```\n\nfires when **elasticity = 0** and denominator \u2260 0, but the error message says **\"0 denominator\"** \u2014 the two fields are swapped.\n\n## Root cause\n\nThe tuple returned by `decode_eip_1559_params()` is `(elasticity_multiplier, max_change_denominator)`. The destructuring variable names `ae` / `ad` (`a`ttribute `e`lasticity / `a`ttribute `d`enominator) confirm the intent, but the prose in the error message accidentally describes the opposite field.\n\n## Changes\n\n1. **Fix the error message** for the zero-elasticity arm: `\"0 denominator\"` \u2192 `\"0 elasticity multiplier\"`.\n2. **Add the missing guard** for the symmetric case `Some((ae, 0)) if ae != 0` \u2014 non-zero elasticity with a zero denominator was silently accepted and would cause a division-by-zero in downstream base fee calculations.\n3. **Update `AttributesMismatch::InvalidEIP1559ParamsCombination`** doc comment to cover both invalid cases.\n4. **Fix the misleading ...",
+              "changed_files": [
+                {
+                  "additions": 38,
+                  "changes": 40,
+                  "deletions": 2,
+                  "filename": "crates/consensus/engine/src/attributes.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix(engine): correct swapped EIP-1559 error message and add missing zero-denominator check"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "1 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-25T22:56:12Z",
+            "current_status": "closed_unmerged",
+            "deletions": 2,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2920,
+            "review_time_hours": null,
+            "state": "closed",
+            "title": "fix(engine): correct swapped EIP-1559 error message and add missing zero-denominator guard",
+            "updated_at": "2026-05-25T22:56:34Z",
+            "user": "Alicepoltora"
+          },
+          {
+            "additions": 1,
+            "changed_files": 1,
+            "closed_at": "2026-05-25T22:45:00Z",
+            "content_signals": {
+              "body_excerpt": "## Bug\n\nIn `find_starting_forkchoice()`, the safe block search cursor was initialized with `current_fc.un_safe` (the unsafe/unconfirmed head) instead of `current_fc.safe` (the known-safe head).\n\n```rust\n// Before (buggy)\nlet mut safe_cursor = current_fc.un_safe;\n\n// After (fixed)\nlet mut safe_cursor = current_fc.safe;\n```\n\n## Impact\n\nOn every node restart, the algorithm unnecessarily traverses every block between the unsafe head and the actual safe head before finding the correct safe block. In practice, the unsafe head can be hundreds or thousands of blocks ahead of the safe head (the sequencing window on Base mainnet is 3600 L1 blocks), making sync start significantly slower than it needs to be.\n\n## Why the fix is safe\n\nThe loop already handles the general case correctly: it checks `is_behind_sequence_window || is_finalized || is_genesis` and walks backwards if needed. Starting from `current_fc.safe` means:\n- If the existing safe block already satisfies the sequencing window condition (the common case), the loop exits immediately.\n- If for some reason the safe block needs to be pushed further back, the loop continues walking backwards exactly as before.\n\nCorrectness is unchang...",
+              "changed_files": [
+                {
+                  "additions": 1,
+                  "changes": 2,
+                  "deletions": 1,
+                  "filename": "crates/consensus/engine/src/sync/mod.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix(sync): initialize safe_cursor from safe FC instead of unsafe"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "1 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-25T22:44:40Z",
+            "current_status": "closed_unmerged",
+            "deletions": 1,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2919,
+            "review_time_hours": null,
+            "state": "closed",
+            "title": "fix(sync): initialize safe_cursor from safe FC instead of unsafe",
+            "updated_at": "2026-05-25T22:45:00Z",
+            "user": "Alicepoltora"
+          },
+          {
+            "additions": 3,
+            "changed_files": 1,
+            "closed_at": "2026-05-25T19:42:16Z",
+            "content_signals": {
+              "body_excerpt": "## Summary\r\n\r\nFixes a panic in `StateProcessor::build_pending_state` when called with empty flashblock input.\r\n\r\nThe previous code called `.unwrap()` on the minimum key of an empty `BTreeMap`, which could panic. This now returns `Ok(None)` when there is no pending state to build.\r\n\r\nFixes #2785\r\n\r\n## Testing\r\n\r\n- `cargo +nightly fmt`\r\n\r\nI attempted `cargo check -p base-flashblocks` locally on Windows, but the build is blocked by a native `librocksdb-sys`/MSVC toolchain error unrelated to this change.",
+              "changed_files": [
+                {
+                  "additions": 3,
+                  "changes": 4,
+                  "deletions": 1,
+                  "filename": "crates/execution/flashblocks/src/processor.rs",
+                  "status": "modified"
+                }
+              ],
+              "commit_subjects": [
+                "fix(flashblocks): handle empty pending state input"
+              ],
+              "modules": [
+                "crates"
+              ],
+              "summary_basis": [
+                "PR body",
+                "1 changed files",
+                "1 commits"
+              ]
+            },
+            "created_at": "2026-05-25T19:41:57Z",
+            "current_status": "closed_unmerged",
+            "deletions": 1,
+            "draft": false,
+            "labels": [],
+            "merged_at": null,
+            "number": 2917,
+            "review_time_hours": null,
+            "state": "closed",
+            "title": "fix(flashblocks): handle empty pending state input",
+            "updated_at": "2026-05-25T19:42:16Z",
+            "user": "Danielkis97"
+          }
+        ],
+        "updated_open": []
+      },
+      "releases": []
+    }
+  },
+  "timezone": "Asia/Shanghai",
+  "triggered_at": "2026-05-27T20:41:49+08:00",
+  "window": {
+    "since": "2026-05-26T00:00:00+08:00",
+    "until": "2026-05-27T00:00:00+08:00"
+  }
+}
